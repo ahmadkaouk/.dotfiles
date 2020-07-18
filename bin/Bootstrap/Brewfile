@@ -1,0 +1,63 @@
+# Brewfile
+cask_args appdir: "/Applications"
+
+tap "homebrew/cask-fonts"   # Just needed for font casks below
+
+### Packages
+## Mac App Store Installer
+brew "mas"
+
+## Fundamentals
+brew "coreutils"
+brew "git"
+
+brew "python3"
+## SHELL
+brew "zsh"
+
+# Utilities
+brew "tmux"
+brew "tree"
+brew "htop"
+brew "ytop"
+
+# FIND
+brew "findutils"
+brew "fzf"
+brew "ripgrep"
+brew "the_silver_searcher"
+brew "fd"
+
+# NeoVim
+brew "neovim"
+brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
+brew "node"
+
+# Dev
+brew "lazygit" 
+brew "lazydocker"
+
+# Window Manager
+brew "yabai"
+brew "skhd"
+
+### Applications
+## Media
+cask "calibre"
+cask "spotify"
+cask "vlc"
+
+## Productivity
+cask "google-backup-and-sync"
+cask "google-chrome"
+cask "firefox"
+cask "typora"
+
+## Developement
+cask "kitty"
+cask "alacritty"
+cask "gitkraken"
+
+### Fonts
+cask "font-fira-code"
+cask "font-saucecodepro-nerd-font"
