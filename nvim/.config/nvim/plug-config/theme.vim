@@ -1,7 +1,6 @@
-set termguicolors
 syntax enable
 syntax on
-let g:oceanic_next_terminal_bold = 1
+set termguicolors
 let g:oceanic_next_terminal_italic = 1
 colorscheme oceanicnext
 hi Normal ctermbg=NONE guibg=NONE
@@ -9,7 +8,7 @@ hi NonText ctermbg=NONE guibg=NONE
 hi LineNr ctermfg=NONE guibg=NONE
 hi SignColumn ctermfg=NONE guibg=NONE
 hi StatusLine guifg=#16252b guibg=#6699CC
-hi StatusLineNC guifg=#16252b guibg=#16252b
+hi StatusLineNC guifg=NONE guibg=#16252b
 hi VertSplit gui=NONE guifg=#17252c guibg=NONE
 hi EndOfBuffer ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#17252c
 

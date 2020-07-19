@@ -17,11 +17,10 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-surround'
 
 " Themes
-Plug 'itchyny/lightline.vim'
-Plug 'mengelbrecht/lightline-bufferline'
 Plug 'mhartington/oceanic-next'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
+
 " Stable version of coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 

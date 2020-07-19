@@ -9,7 +9,7 @@ yabai -m config window_shadow                on
 yabai -m config window_opacity               on
 yabai -m config window_opacity_duration      0.0
 yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        0.90
+yabai -m config normal_window_opacity        1.0
 yabai -m config window_border                off 
 yabai -m config window_border_width          0
 yabai -m config active_window_border_color   0xff3CB371
@@ -25,11 +25,11 @@ yabai -m configmouse_drop_action             swap
 
 # general space settings
 yabai -m config layout                       bsp
-yabai -m config top_padding                  15
-yabai -m config bottom_padding               15
-yabai -m config left_padding                 15
-yabai -m config right_padding                15
-yabai -m config window_gap                   08
+yabai -m config top_padding                  20
+yabai -m config bottom_padding               20
+yabai -m config left_padding                 20
+yabai -m config right_padding                20
+yabai -m config window_gap                   10
 
 # rules
 # float system preferences

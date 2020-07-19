@@ -13,7 +13,7 @@ set cursorline                          " Enable highlighting of the current lin
 set ruler              			            " Show the cursor position all the time
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set nowrap                              " Display long lines as just one line
-set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
+set signcolumn=yes                     " Always show the signcolumn, otherwise it would shift the text each time
 set termguicolors                       " Set true colors
 set splitbelow                          " Set preview window to appear at bottom
 
@@ -241,4 +241,5 @@ function! StartifyEntryFormat()
 endfunction
 
 
-autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif 
+source $HOME/.config/nvim/plug-config/statusline.vim

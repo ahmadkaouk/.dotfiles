@@ -10,7 +10,7 @@ window:
 colors:
   # Default colors
   primary:
-    background: "#262a34"
+    background: "#323F4E"
     foreground: "#abb2bf"
     # Bright and dim foreground colors
     #
