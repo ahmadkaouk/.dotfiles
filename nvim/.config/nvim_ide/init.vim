@@ -1,28 +1,7 @@
-" auto-install vim-plug
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
-
-call plug#begin('~/.config/nvim/autoload/plugged')
-" Better Syntax Support
-Plug 'sheerun/vim-polyglot'
-" Appearence
-Plug 'ryanoasis/vim-devicons'
-Plug 'tpope/vim-surround'
-" Themes
-Plug 'mhartington/oceanic-next'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
-Plug 'itchyny/lightline.vim'
-" FZF
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-" Vim which Key
-Plug 'liuchengxu/vim-which-key'
-" Vim Snippets
-Plug 'honza/vim-snippets'
-call plug#end()
-
+source $HOME/.config/nvim/plug-config/plugins.vim
+source $HOME/.config/nvim/plug-config/theme.vim
+source $HOME/.config/nvim/plug-config/fzf.vim
+source $HOME/.config/nvim/plug-config/coc.vim
 " ============================================================================ "
 " ===                           GENERAL OPTIONS                            === "
 " ============================================================================ "
@@ -153,6 +132,72 @@ let g:which_key_map.f = {
       \ 'y' : [':Filetypes'    , 'file types'],
       \ }
 
+" g is for Git
+let g:which_key_map.g = {
+      \ 'name' : '+git' ,
+      \ 'a' : [':Git add .'                        , 'add all'],
+      \ 'A' : [':Git add %'                        , 'add current'],
+      \ 'b' : [':Git blame'                        , 'blame'],
+      \ 'B' : [':GBrowse'                          , 'browse'],
+      \ 'c' : [':Git commit'                       , 'commit'],
+      \ 'd' : [':Git diff'                         , 'diff'],
+      \ 'D' : [':Gdiffsplit'                       , 'diff split'],
+      \ 'g' : [':GGrep'                            , 'git grep'],
+      \ 'G' : [':Gstatus'                          , 'status'],
+      \ 'h' : [':GitGutterLineHighlightsToggle'    , 'highlight hunks'],
+      \ 'H' : ['<Plug>(GitGutterPreviewHunk)'      , 'preview hunk'],
+      \ 'j' : ['<Plug>(GitGutterNextHunk)'         , 'next hunk'],
+      \ 'k' : ['<Plug>(GitGutterPrevHunk)'         , 'prev hunk'],
+      \ 'l' : [':Git log'                          , 'log'],
+      \ 'p' : [':Git push'                         , 'push'],
+      \ 'P' : [':Git pull'                         , 'pull'],
+      \ 'r' : [':GRemove'                          , 'remove'],
+      \ 's' : ['<Plug>(GitGutterStageHunk)'        , 'stage hunk'],
+      \ 't' : [':GitGutterSignsToggle'             , 'toggle signs'],
+      \ 'u' : ['<Plug>(GitGutterUndoHunk)'         , 'undo hunk'],
+      \ 'v' : [':GV'                               , 'view commits'],
+      \ 'V' : [':GV!'                              , 'view buffer commits'],
+      \ }
+
+" c is for Coc
+let g:which_key_map.l = {
+      \ 'name' : '+lsp' ,
+      \ '.' : [':CocConfig'                          , 'config'],
+      \ ';' : ['<Plug>(coc-refactor)'                , 'refactor'],
+      \ 'a' : ['<Plug>(coc-codeaction)'              , 'line action'],
+      \ 'A' : ['<Plug>(coc-codeaction-selected)'     , 'selected action'],
+      \ 'b' : [':CocNext'                            , 'next action'],
+      \ 'B' : [':CocPrev'                            , 'prev action'],
+      \ 'c' : [':CocList commands'                   , 'commands'],
+      \ 'd' : ['<Plug>(coc-definition)'              , 'definition'],
+      \ 'D' : ['<Plug>(coc-declaration)'             , 'declaration'],
+      \ 'e' : [':CocList extensions'                 , 'extensions'],
+      \ 'f' : ['<Plug>(coc-format-selected)'         , 'format selected'],
+      \ 'F' : ['<Plug>(coc-format)'                  , 'format'],
+      \ 'h' : ['<Plug>(coc-float-hide)'              , 'hide'],
+      \ 'i' : ['<Plug>(coc-implementation)'          , 'implementation'],
+      \ 'I' : [':CocList diagnostics'                , 'diagnostics'],
+      \ 'j' : ['<Plug>(coc-float-jump)'              , 'float jump'],
+      \ 'l' : ['<Plug>(coc-codelens-action)'         , 'code lens'],
+      \ 'n' : ['<Plug>(coc-diagnostic-next)'         , 'next diagnostic'],
+      \ 'N' : ['<Plug>(coc-diagnostic-next-error)'   , 'next error'],
+      \ 'o' : ['<Plug>(coc-openlink)'                , 'open link'],
+      \ 'O' : [':CocList outline'                    , 'outline'],
+      \ 'p' : ['<Plug>(coc-diagnostic-prev)'         , 'prev diagnostic'],
+      \ 'P' : ['<Plug>(coc-diagnostic-prev-error)'   , 'prev error'],
+      \ 'q' : ['<Plug>(coc-fix-current)'             , 'quickfix'],
+      \ 'r' : ['<Plug>(coc-rename)'                  , 'rename'],
+      \ 'R' : ['<Plug>(coc-references)'              , 'references'],
+      \ 's' : [':CocList -I symbols'                 , 'references'],
+      \ 'S' : [':CocList snippets'                   , 'snippets'],
+      \ 't' : ['<Plug>(coc-type-definition)'         , 'type definition'],
+      \ 'U' : [':CocUpdate'                          , 'update CoC'],
+      \ 'u' : [':CocListResume'                      , 'resume list'],
+      \ 'v' : [':Vista!!'                            , 'tag viewer'],
+      \ 'z' : [':CocDisable'                         , 'disable CoC'],
+      \ 'Z' : [':CocEnable'                          , 'enable CoC'],
+      \ }
+
 let g:which_key_map['s'] = [ ':w'                        , 'Save' ]
 let g:which_key_map['q'] = [ ':q'                        , 'Quit' ]
 let g:which_key_map['w'] = [ ':bw'                       , 'Close Tab' ]
@@ -161,137 +206,40 @@ let g:which_key_map['e'] = [ ':CocCommand explorer'      , 'Explorer']
 let g:which_key_map['S'] = [ ':Startify'                 , 'start screen' ]
 let g:which_key_map['C'] = [ ':set hlsearch! hlsearch?'  , 'Clear search' ]
 noremap <leader>C :set hlsearch! hlsearch?<cr>
+" Register which key map
 call which_key#register('<Space>', "g:which_key_map")
 
-
 " ============================================================================ "
-" ===                             Theme Config                             === "
-" ============================================================================ "
-
-syntax enable
-syntax on
-set termguicolors
-let g:oceanic_next_terminal_italic = 1
-colorscheme oceanicnext
-hi Normal ctermbg=NONE guibg=NONE
-hi NonText ctermbg=NONE guibg=NONE
-hi LineNr ctermfg=NONE guibg=NONE
-hi SignColumn ctermfg=NONE guibg=NONE
-hi StatusLine guifg=#16252b guibg=#6699CC
-hi StatusLineNC guifg=NONE guibg=#16252b
-hi VertSplit gui=NONE guifg=#17252c guibg=NONE
-hi EndOfBuffer ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#17252c
-
-" === Vim Lighline ==== "
-let g:lightline = {
-      \ 'colorscheme': 'onehalfdark',
-      \ 'active': {
-      \   'left': [['mode', 'paste'],
-      \            ['zoom', 'githunks', 'gitbranch', 'readonly', 'filename', 'method']],
-      \   'right': [['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', 'trailing', 'lineinfo'],
-      \             ['percent'],
-      \             ['filetype']]
-      \ },
-      \ 'tabline': {
-      \   'left': [['buffers']],
-      \   'right': [['']]
-      \ },
-      \ 'component_expand': {
-      \   'linter_checking': 'lightline#ale#checking',
-      \   'linter_errors': 'lightline#ale#errors',
-      \   'linter_warnings': 'lightline#ale#warnings',
-      \   'linter_ok': 'lightline#ale#ok',
-      \   'trailing': 'lightline#trailing_whitespace#component',
-      \   'buffers': 'lightline#bufferline#buffers'
-      \ },
-      \ 'component_type': {
-      \   'linter_checking': 'left',
-      \   'linter_warnings': 'warning',
-      \   'linter_errors': 'error',
-      \   'linter_ok': 'left',
-      \   'trailing': 'error',
-      \   'buffers': 'tabsel'
-      \ },
-      \ 'component_function': {
-      \   'zoom': 'zoom#statusline',
-      \   'githunks': 'LightlineGitGutter',
-      \   'gitbranch': 'LightlineGitFugitive',
-      \   'filename': 'LightlineFilename',
-      \   'method': 'NearestMethodOrFunction',
-      \   'fileformat': 'LightlineFileformat',
-      \   'filetype': 'LightlineFiletype'
-      \ },
-      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
-      \ }
-
-let g:lightline#bufferline#filename_modifier = ':t'
-let g:lightline#bufferline#enable_devicons  = 1
-let g:lightline#bufferline#shorten_path = 0
-let g:lightline#bufferline#min_buffer_count = 1
-let g:lightline#bufferline#show_number      = 1
-let g:lightline#bufferline#unicode_symbols  = 1
-let g:lightline#trailing_whitespace#indicator = '¥'
-
-function LightlineGitGutter()
-  if !get(g:, 'gitgutter_enabled', 0) || empty(FugitiveHead())
-    return ''
-  endif
-  let [ l:added, l:modified, l:removed ] = GitGutterGetHunkSummary()
-  return printf('+%d ~%d -%d', l:added, l:modified, l:removed)
-endfunction
-
-function! LightlineFilename()
-  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-  let modified = &modified ? ' [+]' : ''
-  return filename . modified
-endfunction
-
-function! NearestMethodOrFunction() abort
-  return get(b:, 'vista_nearest_method_or_function', '')
-endfunction
-
-function! LightlineFileformat()
-  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
-endfunction
-
-function! LightlineFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
-endfunction
-
-
-" ============================================================================ "
-" ===                             FZF Config                               === "
+" ===                             Plug Config                              === "
 " ============================================================================ "
 
-let g:fzf_history_dir = '~/.local/share/fzf-history'
-let g:fzf_tags_command = 'ctags -R'
+" ==========            Startify               ============== "
+let g:startify_session_dir = '~/.config/nvim/session'
+let g:startify_lists = [
+          \ { 'type': 'dir',       'header': ['   Files at '. getcwd()] },
+          \  { 'type': function('helpers#startify#listcommits'), 'header': [ '   Recent Commits' ] },
+          \ { 'type': 'files',     'header': ['   History']                        },
+          \ { 'type': 'sessions',  'header': ['   Sessions']                     },
+          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']                    },
+          \ ]
 
-let $FZF_DEFAULT_COMMAND="rg --files --hidden"
+let g:startify_bookmarks = [
+            \ { 'i': '~/.config/nvim/init.vim' },
+            \ { 'z': '~/.zshrc' },
+            \ { 'd': '~/dev'},
+            \ { 'g': '~/Google\ Drive'},
+            \ ]
 
-"Get Files
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
-
-" Get text in files with Rg
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
-
-" Ripgrep advanced
-function! RipgrepFzf(query, fullscreen)
-  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
-  let initial_command = printf(command_fmt, shellescape(a:query))
-  let reload_command = printf(command_fmt, '{q}')
-  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+let g:startfy_session_autoload = 1
+let g:startify_session_delete_buffers = 1
+let g:startify_change_to_vcs_root = 1
+let g:startify_fortune_use_unicode = 1
+let g:startify_session_persistence = 1
+let g:startify_enable_special = 0
+function! StartifyEntryFormat()
+    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
 endfunction
 
-command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
-" Git grep
-command! -bang -nargs=* GGrep
-  \ call fzf#vim#grep(
-  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0) 
-  \   'git grep --line-number '.shellescape(<q-args>), 0,
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif 
+source $HOME/.config/nvim/plug-config/statusline.vim
