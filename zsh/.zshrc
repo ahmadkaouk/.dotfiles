@@ -4,8 +4,6 @@
 export EDITOR=nvim
 export ZSH="${HOME}/.oh-my-zsh"
 
-ZSH_THEME="spaceship"
-SPACESHIP_CHAR_SYMBOL=' '
 plugins=(
     zsh-syntax-highlighting
     zsh-autosuggestions
@@ -61,4 +59,4 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 autoload -U promptinit; promptinit
-prompt spaceship
+prompt pure
