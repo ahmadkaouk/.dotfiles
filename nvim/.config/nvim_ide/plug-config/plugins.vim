@@ -11,7 +11,7 @@ Plug 'sheerun/vim-polyglot'
 
 " Auto pairs for '(' '[' '{'
 Plug 'jiangmiao/auto-pairs'
-
+Plug 'voldikss/vim-floaterm'
 " Appearence
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-surround'
