@@ -58,5 +58,4 @@ export FZF_ALT_C_COMMAND="fd --hidden -t d . $HOME"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-autoload -U promptinit; promptinit
-prompt pure
+PROMPT="%B%F{41}%n%f%b:%B%F{111}%~%f%b$ "

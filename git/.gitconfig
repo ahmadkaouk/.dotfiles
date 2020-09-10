@@ -6,3 +6,7 @@
 [user]
 	name = Ahmad
 	email = ahmadkaouk.93@gmail.com
+[core]
+	autocrlf = input
+[color]
+	ui = auto

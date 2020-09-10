@@ -11,7 +11,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-surround'
 " Themes
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'safv12/andromeda.vim'
 Plug 'mhartington/oceanic-next'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'vim-airline/vim-airline'
@@ -171,7 +171,7 @@ syntax enable
 syntax on
 set termguicolors
 let g:oceanic_next_terminal_italic = 1
-colorscheme dracula
+colorscheme andromeda
 hi Normal ctermbg=NONE guibg=NONE
 hi NonText ctermbg=NONE guibg=NONE
 hi LineNr ctermfg=NONE guibg=NONE

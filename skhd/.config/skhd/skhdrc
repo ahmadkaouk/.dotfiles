@@ -95,7 +95,8 @@ alt + ctrl - h : yabai -m window --warp west
 alt + ctrl - l : yabai -m window --warp east 
 
 # move managed window
-shift + cmd - h : yabai -m window --warp east
+shift + cmd - l : yabai -m window --warp east
+shift + cmd - h : yabai -m window --warp west
 
 # balance size of windows
 alt + shift - b: yabai -m space --balance
