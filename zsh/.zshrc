@@ -14,30 +14,14 @@ SAVEHIST=1000
 _comp_options+=(globdots)
 
 # Aliases 
+alias v="nvim"
+alias rmf="rm -rf"
 alias cc="clear"
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias tree='tree -a -I '.git''
-
-# vi mode
-bindkey -v
-export KEYTIMEOUT=1
-
-# Change cursor shape for different vi modes.
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
-}
-zle -N zle-keymap-select
 
 # FZF 
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
@@ -48,14 +32,14 @@ export FZF_ALT_C_COMMAND="fd --hidden -t d . $HOME"
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-
-# Spaceship prompt
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_PROMPT_SEPARATE_LINE=false
 SPACESHIP_CHAR_SYMBOL=❯
 SPACESHIP_VI_MODE_SHOW=false
 SPACESHIP_CHAR_SUFFIX=" "
 SPACESHIP_GIT_SHOW=false
-SPACESHIP_PROMPT_ORDER=(user host dir char)
+
+
+# PROMPT="%B%F{161}[%f%bA%B%F{28}@%f%b%BK%b %B%F{31}%~%f%b%B%F{161}]%f%b%B%F{white}$%f%b "
 autoload -U promptinit; promptinit
-prompt spaceship
+# change the color for both `prompt:success` and `prompt:error`
+zstyle ':prompt:pure:prompt:*' color green
+prompt pure

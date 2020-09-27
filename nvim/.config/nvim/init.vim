@@ -11,17 +11,13 @@ Plug 'sheerun/vim-polyglot'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-surround'
 " Themes
-Plug 'safv12/andromeda.vim'
-Plug 'mhartington/oceanic-next'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
-Plug 'vim-airline/vim-airline'
+Plug 'ntk148v/vim-horizon'
+Plug 'voldikss/vim-floaterm'
 " FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " Vim which Key
 Plug 'liuchengxu/vim-which-key'
-" Vim Snippets
-Plug 'honza/vim-snippets'
 call plug#end()
 
 " ============================================================================ "
@@ -60,10 +56,13 @@ set timeoutlen=100                      " By default timeoutlen is 1000 ms
 set nobackup                            " This is recommended by coc
 set noswapfile                          " No Swap Files
 set nowritebackup                       " This is recommended by coc
-set undofile
-set undolevels=3000
-set undoreload=10000
 
+" Persistent undo
+" Don't forget mkdir folder $HOME/.vim/undo
+set undofile
+set undodir=$HOME/.config/nvim/undo
+set undolevels=1000
+set undoreload=10000
 
 " ============================================================================ "
 " ===                             KEY MAPPINGS                             === "
@@ -111,12 +110,12 @@ let g:which_key_map =  {}
 " Define a separator
 let g:which_key_sep = ''
 
-let g:which_key_use_floating_win = 0
+let g:which_key_use_floating_win = 1
 
 " Change the colors if you want
 highlight default link WhichKey          Operator
-highlight default link WhichKeySeperator DiffAdded
 highlight default link WhichKeyGroup     Identifier
+highlight default link WhichKeySeperator DiffAdded
 highlight default link WhichKeyDesc      Function
 
 " Hide status line
@@ -171,25 +170,27 @@ syntax enable
 syntax on
 set termguicolors
 let g:oceanic_next_terminal_italic = 1
-colorscheme andromeda
+colorscheme horizon
 hi Normal ctermbg=NONE guibg=NONE
 hi NonText ctermbg=NONE guibg=NONE
 hi LineNr ctermfg=NONE guibg=NONE
 hi SignColumn ctermfg=NONE guibg=NONE
 hi StatusLine gui=NONE guibg=NONE
-hi StatusLineNC guifg=NONE guibg=#16252b
 hi VertSplit gui=NONE guifg=#17252c guibg=NONE
 hi EndOfBuffer ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#17252c
 
-" === Vim Lightline ==== "
-" Custom setup that removes filetype/whitespace from default vim airline bar
-" Vim airline theme
-let g:airline_theme='transparent'
-let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'z', 'warning', 'error']]
-let g:airline#extensions#whitespace#enabled = 0
+" === Vim Statusline==== "
+set laststatus=2
 
+" ============================================================================ "
 " ===                             FZF Config                               === "
 " ============================================================================ "
+" FZF config
+let g:fzf_layout = { 'window': {
+      \ 'width': 0.9,
+      \ 'height': 0.7,
+      \ 'highlight': 'Comment',
+      \ 'rounded': v:true } }
 
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzf_tags_command = 'ctags -R'
