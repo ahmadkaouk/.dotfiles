@@ -1,0 +1,13 @@
+{
+  "coc.preferences.rootPatterns": [
+    ".git",
+    ".hg",
+    ".projections.json"
+  ],
+  "clangd.fallbackFlags": [
+    "xc++",
+    "std=c++11",
+    "iquotequote",
+    "Isystem"
+  ]
+}

@@ -10,9 +10,16 @@ Plug 'sheerun/vim-polyglot'
 " Appearence
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-surround'
+Plug 'Yggdroot/indentLine'
+
+" Intellisence
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " Themes
+Plug 'bling/vim-bufferline'
 Plug 'ntk148v/vim-horizon'
 Plug 'voldikss/vim-floaterm'
+
 " FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -20,17 +27,25 @@ Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vim-which-key'
 call plug#end()
 
+source $HOME/.config/nvim/mapping.vim
+source $HOME/.config/nvim/autocommand.vim
+source $HOME/.config/nvim/coc.vim
+
 " ============================================================================ "
 " ===                           GENERAL OPTIONS                            === "
 " ============================================================================ "
+"" Encoding
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8
+
 " Appearence
 set number                              " display line numbers
 set relativenumber                      " Relative Line numbers
 set cursorline                          " highlight current line
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set nowrap                              " Display long lines as just one line
-set signcolumn=yes                     " Always show the signcolumn, otherwise it would shift the text each time
-set termguicolors                       " Set true colors
+set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
 set splitbelow                          " Set preview window to appear at bottom
 
 " Tab Control
@@ -41,16 +56,17 @@ set smartindent                         " Makes indenting smart
 set tabstop=2                           " Insert 2 spaces for a tab
 set shiftwidth=2                        " Change the number of space characters inserted for indentation
 
-" Options
-set mouse=a                             " Enable your mouse
-set encoding=utf-8                      " The encoding displayed 
-set fileencoding=utf-8                  " The encoding written to file
+"" Searching
+set hlsearch
 set incsearch                           " Set Incremental search
-set clipboard=unnamedplus               " Copy paste between vim and everything else
 set ignorecase                          " ignore case when searching
 set smartcase                           " if the search string has an upper case letter in it, the search will be case sensitive
+
+" Options
+set mouse=a                             " Enable your mouse
+set clipboard=unnamedplus               " Copy paste between vim and everything else
 set updatetime=300                      " Faster completion
-set timeoutlen=100                      " By default timeoutlen is 1000 ms
+set timeoutlen=500                     " By default timeoutlen is 1000 ms
 
 " Backup
 set nobackup                            " This is recommended by coc
@@ -64,103 +80,14 @@ set undodir=$HOME/.config/nvim/undo
 set undolevels=1000
 set undoreload=10000
 
-" ============================================================================ "
-" ===                             KEY MAPPINGS                             === "
-" ============================================================================ "
-let mapleader=" "
+" IndentLine
+let g:indentLine_enabled = 1
+let g:indentLine_concealcursor = 0
+let g:indentLine_char = '▏'
+let g:indentLine_faster = 1
 
-" Esc Alternati inoremap jk <Esc>
-inoremap kj <Esc>
-inoremap jk <Esc>
-nnoremap <C-c> <ESC>
-
-" TAB in general mode will move to text buffer
-nnoremap <TAB> :bnext<CR>
-" SHIFT-TAB will go back
-nnoremap <S-TAB> :bprevious<CR>
-
-" set paste toggle
-set pastetoggle=<leader>v
-
-vnoremap < <gv
-vnoremap > >gv
-
-" Move Line Up and Down
-nnoremap <C-j> :move +1<CR>
-nnoremap <C-K> :move -2<CR>
-
-" Move selected line / block of text in visual mode
-" shift + k to move up
-" shift + j to move down
-xnoremap K :move '<-2<CR>gv=gv
-xnoremap J :move '>+1<CR>gv=gv
-
-" scroll the viewport faster
-nnoremap <C-y> 3<C-y>
-nnoremap <C-e> 3<C-e>
-
-
-" Which key Plug Config
-" Map leader to which_key
-nnoremap <silent> <leader> :silent WhichKey '<Space>'<CR>
-vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
-
-" Create map to add keys to
-let g:which_key_map =  {}
-" Define a separator
-let g:which_key_sep = ''
-
-let g:which_key_use_floating_win = 1
-
-" Change the colors if you want
-highlight default link WhichKey          Operator
-highlight default link WhichKeyGroup     Identifier
-highlight default link WhichKeySeperator DiffAdded
-highlight default link WhichKeyDesc      Function
-
-" Hide status line
-autocmd! FileType which_key
-autocmd  FileType which_key set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
-
-" s is for search
-let g:which_key_map.f = {
-      \ 'name' : '+search' ,
-      \ 'z' : [':FZF'          , 'FZF'],
-      \ 'b' : [':BLines'       , 'current buffer'],
-      \ 't' : [':Rg'           , 'text Rg'],
-      \ 'f' : [':Files'        , 'files'],
-      \ ';' : [':Commands'     , 'commands'],
-      \ 'B' : [':Buffers'      , 'open buffers'],
-      \ 'a' : [':Ag'           , 'text Ag'],
-      \ '/' : [':History/'     , 'history'],
-      \ 'c' : [':Commits'      , 'commits'],
-      \ 'C' : [':BCommits'     , 'buffer commits'],
-      \ 'g' : [':GFiles'       , 'git files'],
-      \ 'G' : [':GFiles?'      , 'modified git files'],
-      \ 'H' : [':History:'     , 'command history'],
-      \ 'h' : [':History'      , 'file history'],
-      \ 'l' : [':Lines'        , 'lines'] ,
-      \ 'm' : [':Marks'        , 'marks'] ,
-      \ 'M' : [':Maps'         , 'normal maps'] ,
-      \ 'p' : [':Helptags'     , 'help tags'] ,
-      \ 'P' : [':Tags'         , 'project tags'],
-      \ 's' : [':Snippets'     , 'snippets'],
-      \ 'T' : [':BTags'        , 'buffer tags'],
-      \ 'w' : [':Windows'      , 'search windows'],
-      \ 'y' : [':Filetypes'    , 'file types'],
-      \ }
-
-let g:which_key_map['s'] = [ ':w'                        , 'Save' ]
-let g:which_key_map['q'] = [ ':q'                        , 'Quit' ]
-let g:which_key_map['w'] = [ ':bw'                       , 'Close Tab' ]
-let g:which_key_map['r'] = [ ':source %'                 , 'Reload' ]
-let g:which_key_map['e'] = [ ':CocCommand explorer'      , 'Explorer']
-let g:which_key_map['S'] = [ ':Startify'                 , 'start screen' ]
-let g:which_key_map['C'] = [ ':set hlsearch! hlsearch?'  , 'Clear search' ]
-noremap <leader>C :set hlsearch! hlsearch?<cr>
-call which_key#register('<Space>', "g:which_key_map")
-
+" Required:
+filetype plugin indent on
 
 " ============================================================================ "
 " ===                             Theme Config                             === "
@@ -168,9 +95,9 @@ call which_key#register('<Space>', "g:which_key_map")
 
 syntax enable
 syntax on
-set termguicolors
+ set termguicolors
 let g:oceanic_next_terminal_italic = 1
-colorscheme horizon
+ colorscheme horizon
 hi Normal ctermbg=NONE guibg=NONE
 hi NonText ctermbg=NONE guibg=NONE
 hi LineNr ctermfg=NONE guibg=NONE
@@ -181,7 +108,6 @@ hi EndOfBuffer ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#17252c
 
 " === Vim Statusline==== "
 set laststatus=2
-
 " ============================================================================ "
 " ===                             FZF Config                               === "
 " ============================================================================ "
@@ -223,3 +149,5 @@ command! -bang -nargs=* GGrep
   \ call fzf#vim#grep(
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0) 
   \   'git grep --line-number '.shellescape(<q-args>), 0,
+
+

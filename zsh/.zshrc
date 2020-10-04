@@ -1,9 +1,19 @@
-# plugins
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export ZSH="${HOME}/.oh-my-zsh"
+# plugins
 plugins=(
+	git
 	zsh-syntax-highlighting
 	zsh-autosuggestions
 )
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
 source $ZSH/oh-my-zsh.sh
 
 # History in cache directory:
@@ -22,6 +32,11 @@ alias ...='cd ../..'
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias tree='tree -a -I '.git''
+# tmux aliases
+alias ta='tmux attach'
+alias tls='tmux ls'
+alias tat='tmux attach -t'
+alias tns='tmux new-session -s'
 
 # FZF 
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
@@ -32,14 +47,8 @@ export FZF_ALT_C_COMMAND="fd --hidden -t d . $HOME"
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-SPACESHIP_CHAR_SYMBOL=❯
-SPACESHIP_VI_MODE_SHOW=false
-SPACESHIP_CHAR_SUFFIX=" "
-SPACESHIP_GIT_SHOW=false
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
-# PROMPT="%B%F{161}[%f%bA%B%F{28}@%f%b%BK%b %B%F{31}%~%f%b%B%F{161}]%f%b%B%F{white}$%f%b "
-autoload -U promptinit; promptinit
-# change the color for both `prompt:success` and `prompt:error`
-zstyle ':prompt:pure:prompt:*' color green
-prompt pure
