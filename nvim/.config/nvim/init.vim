@@ -19,7 +19,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'bling/vim-bufferline'
 Plug 'ntk148v/vim-horizon'
 Plug 'voldikss/vim-floaterm'
-
+Plug 'lifepillar/vim-solarized8'
+Plug 'Morhetz/gruvbox'
 " FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -51,7 +52,7 @@ set splitbelow                          " Set preview window to appear at bottom
 " Tab Control
 set expandtab                           " Converts tabs to spaces
 set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
-set autoindent                          " Good auto indent
+set autoindent                          " Good auto indentv
 set smartindent                         " Makes indenting smart
 set tabstop=2                           " Insert 2 spaces for a tab
 set shiftwidth=2                        " Change the number of space characters inserted for indentation
@@ -95,9 +96,9 @@ filetype plugin indent on
 
 syntax enable
 syntax on
- set termguicolors
-let g:oceanic_next_terminal_italic = 1
- colorscheme horizon
+set termguicolors
+set background=dark
+colorscheme gruvbox
 hi Normal ctermbg=NONE guibg=NONE
 hi NonText ctermbg=NONE guibg=NONE
 hi LineNr ctermfg=NONE guibg=NONE

@@ -1,7 +1,7 @@
 " ============================================================================ "
 " ===                             KEY MAPPINGS                             === "
 " ============================================================================ "
-let mapleader=","
+let mapleader="s"
 
 "" Split
 noremap <leader>h :<C-u>split<CR>
@@ -58,4 +58,4 @@ xnoremap J :move '>+1<CR>gv=gv
 nnoremap <C-y> 3<C-y>
 nnoremap <C-e> 3<C-e>
 
-nnoremap <silent> <Leader>b :TagbarToggle<CR>
+nnoremap <silent> <Leader>t :TagbarToggle<CR>
