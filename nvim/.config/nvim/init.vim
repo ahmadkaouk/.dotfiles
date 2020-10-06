@@ -24,13 +24,14 @@ Plug 'Morhetz/gruvbox'
 " FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Vim which Key
-Plug 'liuchengxu/vim-which-key'
+
+Plug 'ptzz/lf.vim'
+Plug 'rbgrouleff/bclose.vim'
 call plug#end()
 
-source $HOME/.config/nvim/mapping.vim
 source $HOME/.config/nvim/autocommand.vim
 source $HOME/.config/nvim/coc.vim
+source $HOME/.config/nvim/mapping.vim
 
 " ============================================================================ "
 " ===                           GENERAL OPTIONS                            === "
@@ -67,7 +68,7 @@ set smartcase                           " if the search string has an upper case
 set mouse=a                             " Enable your mouse
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set updatetime=300                      " Faster completion
-set timeoutlen=500                     " By default timeoutlen is 1000 ms
+set timeoutlen=300                     " By default timeoutlen is 1000 ms
 
 " Backup
 set nobackup                            " This is recommended by coc
