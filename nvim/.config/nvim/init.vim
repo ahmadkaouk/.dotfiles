@@ -7,6 +7,7 @@ endif
 call plug#begin('~/.config/nvim/autoload/plugged')
 " Better Syntax Support
 Plug 'sheerun/vim-polyglot'
+
 " Appearence
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-surround'
@@ -14,17 +15,20 @@ Plug 'Yggdroot/indentLine'
 
 " Intellisence
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'preservim/tagbar'
 
 " Themes
-Plug 'bling/vim-bufferline'
-Plug 'ntk148v/vim-horizon'
-Plug 'voldikss/vim-floaterm'
 Plug 'lifepillar/vim-solarized8'
 Plug 'Morhetz/gruvbox'
+
 " FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+" Git
+Plug 'tpope/vim-fugitive'
+
+" File Manager
 Plug 'ptzz/lf.vim'
 Plug 'rbgrouleff/bclose.vim'
 call plug#end()
@@ -51,22 +55,18 @@ set signcolumn=yes                      " Always show the signcolumn, otherwise 
 set splitbelow                          " Set preview window to appear at bottom
 
 " Tab Control
-set expandtab                           " Converts tabs to spaces
-set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
 set autoindent                          " Good auto indentv
 set smartindent                         " Makes indenting smart
 set tabstop=2                           " Insert 2 spaces for a tab
 set shiftwidth=2                        " Change the number of space characters inserted for indentation
 
 "" Searching
-set hlsearch
-set incsearch                           " Set Incremental search
 set ignorecase                          " ignore case when searching
 set smartcase                           " if the search string has an upper case letter in it, the search will be case sensitive
 
 " Options
 set mouse=a                             " Enable your mouse
-set clipboard=unnamedplus               " Copy paste between vim and everything else
+set clipboard+=unnamedplus               " Copy paste between vim and everything else
 set updatetime=300                      " Faster completion
 set timeoutlen=300                     " By default timeoutlen is 1000 ms
 

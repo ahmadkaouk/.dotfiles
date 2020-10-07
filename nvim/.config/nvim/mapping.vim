@@ -14,24 +14,19 @@ noremap <leader>q :q<CR>
 noremap <leader>o :Files<CR>
 noremap <leader>p :History<CR>
 noremap <leader>f :BLines<CR>
-noremap <leader>F :Rg<CR>
+noremap <leader>F :Rg!<CR>
 noremap <leader>g :GFiles<CR>
 noremap <leader>n :vnew<CR>
 
 " Split window
 nmap <leader>b :split<Return><C-w>w
 nmap <leader>v :vsplit<Return><C-w>w
+
 " Move window
 map <leader>h <C-w>h
 map <leader>k <C-w>k
 map <leader>j <C-w>j
 map <leader>l <C-w>l
-
-" Resize window
-nnoremap <leader>H <C-w><
-nnoremap <leader>L <C-w>>
-nnoremap <leader>K <C-w>+
-nnoremap <leader>J <C-w>-
 
 " Esc Alternative inoremap jk <Esc>
 inoremap kj <Esc>
@@ -42,7 +37,7 @@ nnoremap <TAB> :bnext<CR>
 nnoremap <S-Tab>:bprevious<CR>
 
 " set paste toggle
-set pastetoggle=<leader>v
+set pastetoggle=<leader>V
 
 " TAB indentation
 vnoremap <S-TAB> <gv
@@ -51,6 +46,7 @@ vnoremap <TAB> >gv
 " Move Line Up and Down
 nnoremap <C-j> :move +1<CR>
 nnoremap <C-K> :move -2<CR>
+
 " Move selected line / block of text in visual mode
 xnoremap K :move '>-2<CR>gv=gv
 xnoremap J :move '>+1<CR>gv=gv
