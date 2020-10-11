@@ -56,3 +56,15 @@ nnoremap <C-y> 3<C-y>
 nnoremap <C-e> 3<C-e>
 
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
+
+" Coc
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+:nmap <leader>E :CocCommand explorer<CR>
+
+" Formatting selected code.
+xmap <leader>kf  <Plug>(coc-format-selected)
+nmap <leader>kf  <Plug>(coc-format-selected)
+
+" Show all diagnostics.
+nnoremap <silent><nowait> <leader>e  :<C-u>CocList diagnostics<cr>

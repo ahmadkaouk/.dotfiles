@@ -18,22 +18,26 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/tagbar'
 
 " Themes
+Plug 'ghifarit53/tokyonight-vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'Morhetz/gruvbox'
-
+Plug 'haishanh/night-owl.vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
 " FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
+Plug 'airblade/vim-rooter'
+" Goyo
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 " Git
 Plug 'tpope/vim-fugitive'
 
-" File Manager
-Plug 'ptzz/lf.vim'
-Plug 'rbgrouleff/bclose.vim'
 call plug#end()
 
-source $HOME/.config/nvim/autocommand.vim
+source $HOME/.config/nvim/fzf.vim
 source $HOME/.config/nvim/coc.vim
 source $HOME/.config/nvim/mapping.vim
 
@@ -57,8 +61,8 @@ set splitbelow                          " Set preview window to appear at bottom
 " Tab Control
 set autoindent                          " Good auto indentv
 set smartindent                         " Makes indenting smart
-set tabstop=2                           " Insert 2 spaces for a tab
-set shiftwidth=2                        " Change the number of space characters inserted for indentation
+set tabstop=4                           " Insert 2 spaces for a tab
+set shiftwidth=4                        " Change the number of space characters inserted for indentation
 
 "" Searching
 set ignorecase                          " ignore case when searching
@@ -99,57 +103,135 @@ syntax enable
 syntax on
 set termguicolors
 set background=dark
+
+let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_enable_italic = 1
+
+let g:gruvbox_contrast_dark="hard"
 colorscheme gruvbox
 hi Normal ctermbg=NONE guibg=NONE
 hi NonText ctermbg=NONE guibg=NONE
 hi LineNr ctermfg=NONE guibg=NONE
 hi SignColumn ctermfg=NONE guibg=NONE
-hi StatusLine gui=NONE guibg=NONE
-hi VertSplit gui=NONE guifg=#17252c guibg=NONE
 hi EndOfBuffer ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#17252c
 
 " === Vim Statusline==== "
 set laststatus=2
-" ============================================================================ "
-" ===                             FZF Config                               === "
-" ============================================================================ "
-" FZF config
-let g:fzf_layout = { 'window': {
-      \ 'width': 0.9,
-      \ 'height': 0.7,
-      \ 'highlight': 'Comment',
-      \ 'rounded': v:true } }
+set noshowmode
+" Lightline Settings
+let g:lightline = {
+  \ 'colorscheme': 'gruvbox',
+  \ 'active': {
+  \   'left': [['mode', 'paste'],
+  \            ['zoom', 'githunks', 'gitbranch', 'readonly', 'filename', 'method']],
+  \   'right': [['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', 'trailing', 'lineinfo'],
+  \             ['percent'],
+  \             ['filetype']]
+  \ },
+  \ 'tabline': {
+  \   'left': [['buffers']],
+  \   'right': [['']]
+  \ },
+  \ 'component_expand': {
+  \   'linter_checking': 'lightline#ale#checking',
+  \   'linter_errors': 'lightline#ale#errors',
+  \   'linter_warnings': 'lightline#ale#warnings',
+  \   'linter_ok': 'lightline#ale#ok',
+  \   'trailing': 'lightline#trailing_whitespace#component',
+  \   'buffers': 'lightline#bufferline#buffers'
+  \ },
+  \ 'component_type': {
+  \   'linter_checking': 'left',
+  \   'linter_warnings': 'warning',
+  \   'linter_errors': 'error',
+  \   'linter_ok': 'left',
+  \   'trailing': 'error',
+  \   'buffers': 'tabsel'
+  \ },
+  \ 'component_function': {
+  \   'zoom': 'zoom#statusline',
+  \   'githunks': 'LightlineGitGutter',
+  \   'gitbranch': 'LightlineGitFugitive',
+  \   'filename': 'LightlineFilename',
+  \   'method': 'NearestMethodOrFunction',
+  \   'fileformat': 'LightlineFileformat',
+  \   'filetype': 'LightlineFiletype'
+  \ },
+  \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+  \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+  \ }
 
-let g:fzf_history_dir = '~/.local/share/fzf-history'
-let g:fzf_tags_command = 'ctags -R'
+let g:lightline#bufferline#filename_modifier = ':t'
+let g:lightline#bufferline#shorten_path = 0
+let g:lightline#bufferline#min_buffer_count = 1
+let g:lightline#bufferline#show_number      = 1
+let g:lightline#bufferline#unicode_symbols  = 1
+let g:lightline#trailing_whitespace#indicator = '¥'
 
-let $FZF_DEFAULT_COMMAND="rg --files --hidden"
-
-"Get Files
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
-
-" Get text in files with Rg
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
-
-" Ripgrep advanced
-function! RipgrepFzf(query, fullscreen)
-  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
-  let initial_command = printf(command_fmt, shellescape(a:query))
-  let reload_command = printf(command_fmt, '{q}')
-  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+function LightlineGitGutter()
+    if !get(g:, 'gitgutter_enabled', 0) || empty(FugitiveHead())
+        return ''
+    endif
+    let [ l:added, l:modified, l:removed ] = GitGutterGetHunkSummary()
+    return printf('+%d ~%d -%d', l:added, l:modified, l:removed)
 endfunction
 
-command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+function! LightlineGitFugitive()
+    if empty(FugitiveHead())
+        return ''
+    endif
+    return ' '.FugitiveHead()
+endfunction
 
-" Git grep
-command! -bang -nargs=* GGrep
-  \ call fzf#vim#grep(
-  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0) 
-  \   'git grep --line-number '.shellescape(<q-args>), 0,
+function! LightlineFilename()
+    let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+    let modified = &modified ? ' [+]' : ''
+    return filename . modified
+endfunction
 
+function! NearestMethodOrFunction() abort
+    return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
 
+function! LightlineFileformat()
+    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
+
+function! LightlineFiletype()
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
+" Save last position
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+let g:goyo_width = 100
+let g:goyo_height = 150
+function! s:goyo_enter()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  endif
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  Limelight
+  " ...
+endfunction
+
+function! s:goyo_leave()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  endif
+  set showmode
+  set showcmd
+  set scrolloff=5
+  hi SignColumn ctermfg=NONE guibg=NONE
+  hi Normal ctermbg=NONE guibg=NONE
+  Limelight!
+  " ...
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
