@@ -42,8 +42,8 @@ colors:
   #  - { index: 16, color: '0x000000' }
 font:
   normal:
-    family: Hack 
-    style: Regular
+    family: DejaVu Sans Mono for Powerline
+    style: Book
   bold:
     family: Hack 
     style: Semibold
@@ -52,7 +52,7 @@ font:
     style: Italic
 
   # Point size
-  size: 14
+  size: 12
 
   offset:
     x: 0
@@ -63,7 +63,7 @@ font:
   # increasing `y` moves the glyph upwards.
   glyph_offset:
     x: 0
-    y: 2
+    y: 0
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.

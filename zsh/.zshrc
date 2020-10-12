@@ -9,11 +9,14 @@ export ZSH="${HOME}/.oh-my-zsh"
 # plugins
 plugins=(
 	git
+	tmux
 	zsh-syntax-highlighting
 	zsh-autosuggestions
 )
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
+
+export EDITOR=nvim
 source $ZSH/oh-my-zsh.sh
 
 # History in cache directory:
@@ -32,11 +35,7 @@ alias ...='cd ../..'
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias tree='tree -a -I '.git''
-# tmux aliases
-alias ta='tmux attach'
-alias tls='tmux ls'
-alias tat='tmux attach -t'
-alias tns='tmux new-session -s'
+
 
 # FZF 
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
