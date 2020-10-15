@@ -34,7 +34,7 @@ inoremap jk <Esc>
 
 " TAB in general mode will move to text buffer
 nnoremap <TAB> :bnext<CR>
-nnoremap <S-Tab>:bprevious<CR>
+nnoremap <S-Tab> :bprevious<CR>
 
 " set paste toggle
 set pastetoggle=<leader>V

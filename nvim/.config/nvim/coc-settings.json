@@ -4,13 +4,6 @@
     ".hg",
     ".projections.json"
   ],
-  "clangd.fallbackFlags": [
-    "xc++",
-    "std=c++11",
-    "iquotequote",
-    "Isystem"
-  ],
-  "clangd.path": "/Users/ahmad/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
   "suggest.enablePreview": true,
   "codeLens.enable": true,
   "git.addedSign.text": "┃",
@@ -48,5 +41,7 @@
     "gj": "expandableNext",
     "<space>": "toggleSelection",
     "<tab>": "actionMenu"
-  }
+  },
+  "clangd.path": "/Users/ahmad/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd",
+  "clangd.semanticHighlighting":true
 }

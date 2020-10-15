@@ -16,13 +16,10 @@ Plug 'Yggdroot/indentLine'
 " Intellisence
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/tagbar'
-
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 " Themes
-Plug 'ghifarit53/tokyonight-vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'Morhetz/gruvbox'
-Plug 'haishanh/night-owl.vim'
-Plug 'ayu-theme/ayu-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 " FZF
@@ -34,7 +31,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 " Git
 Plug 'tpope/vim-fugitive'
-
+Plug 'junegunn/gv.vim'
 call plug#end()
 
 source $HOME/.config/nvim/fzf.vim
@@ -104,9 +101,6 @@ syntax on
 set termguicolors
 set background=dark
 
-let g:tokyonight_style = 'night' " available: night, storm
-let g:tokyonight_enable_italic = 1
-
 let g:gruvbox_contrast_dark="hard"
 colorscheme gruvbox
 hi Normal ctermbg=NONE guibg=NONE
@@ -124,7 +118,7 @@ let g:lightline = {
   \ 'active': {
   \   'left': [['mode', 'paste'],
   \            ['zoom', 'githunks', 'gitbranch', 'readonly', 'filename', 'method']],
-  \   'right': [['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', 'trailing', 'lineinfo'],
+  \   'right': [[ 'lineinfo'],
   \             ['percent'],
   \             ['filetype']]
   \ },
@@ -133,19 +127,9 @@ let g:lightline = {
   \   'right': [['']]
   \ },
   \ 'component_expand': {
-  \   'linter_checking': 'lightline#ale#checking',
-  \   'linter_errors': 'lightline#ale#errors',
-  \   'linter_warnings': 'lightline#ale#warnings',
-  \   'linter_ok': 'lightline#ale#ok',
-  \   'trailing': 'lightline#trailing_whitespace#component',
   \   'buffers': 'lightline#bufferline#buffers'
   \ },
   \ 'component_type': {
-  \   'linter_checking': 'left',
-  \   'linter_warnings': 'warning',
-  \   'linter_errors': 'error',
-  \   'linter_ok': 'left',
-  \   'trailing': 'error',
   \   'buffers': 'tabsel'
   \ },
   \ 'component_function': {
