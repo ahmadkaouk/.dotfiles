@@ -4,10 +4,6 @@
 nnoremap <Space> <Nop>
 let mapleader = " "
 
-"" Split
-noremap <leader>h :<C-u>split<CR>
-noremap <leader>v :<C-u>vsplit<CR>
-
 " Like Vscode
 noremap <leader>s :w<CR>
 noremap <leader>q :q<CR>
