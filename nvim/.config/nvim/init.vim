@@ -1,4 +1,3 @@
-if !exists('g:vscode')
 " auto-install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
@@ -20,13 +19,13 @@ Plug 'preservim/tagbar'
 
 " Themes
 Plug 'Morhetz/gruvbox'
+Plug 'lifepillar/vim-solarized8'
+Plug 'overcache/NeoSolarized'
+Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'bfrg/vim-cpp-modern'
-
-" Goyo
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -79,6 +78,9 @@ set nobackup                            " This is recommended by coc
 set noswapfile                          " No Swap Files
 set nowritebackup                       " This is recommended by coc
 
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
+
 " Persistent undo
 " Don't forget mkdir folder $HOME/.vim/undo
 set undofile
@@ -103,7 +105,11 @@ syntax enable
 syntax on
 set termguicolors
 set background=dark
-
+let g:neosolarized_contrast = "high"
+let g:neosolarized_bold = 1
+let g:neosolarized_underline = 1
+let g:neosolarized_italic = 0
+colorscheme Neosolarized
 
 hi Normal guibg=NONE ctermbg=NONE
 hi VertSplit ctermbg=NONE guibg=NONE
@@ -112,41 +118,74 @@ hi LineNr guifg=NONE guibg=NONE
 hi SignColumn ctermfg=NONE guibg=NONE
 hi EndOfBuffer ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#111111
 
+" === Vim Statusline==== "
+set laststatus=2
+set noshowmode
+" Lightline Settings
+let g:lightline = {
+  \ 'colorscheme': 'solarized',
+  \ 'active': {
+  \   'left': [['mode', 'paste'],
+  \            ['zoom', 'githunks', 'gitbranch', 'readonly', 'filename', 'method']],
+  \   'right': [[ 'lineinfo'],
+  \             ['percent'],
+  \             ['filetype']]
+  \ },
+  \ 'tabline': {
+  \   'left': [['buffers']],
+  \   'right': [['']]
+  \ },
+  \ 'component_expand': {
+  \   'buffers': 'lightline#bufferline#buffers'
+  \ },
+  \ 'component_type': {
+  \   'buffers': 'tabsel'
+  \ },
+  \ 'component_function': {
+  \   'zoom': 'zoom#statusline',
+  \   'githunks': 'LightlineGitGutter',
+  \   'gitbranch': 'LightlineGitFugitive',
+  \   'filename': 'LightlineFilename',
+  \   'method': 'NearestMethodOrFunction',
+  \   'fileformat': 'LightlineFileformat',
+  \   'filetype': 'LightlineFiletype'
+  \ },
+  \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+  \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+  \ }
+
+let g:lightline#bufferline#filename_modifier = ':t'
+let g:lightline#bufferline#shorten_path = 0
+let g:lightline#bufferline#min_buffer_count = 1
+let g:lightline#bufferline#show_number      = 1
+let g:lightline#bufferline#unicode_symbols  = 1
+let g:lightline#trailing_whitespace#indicator = '¥'
+
+function LightlineGitGutter()
+    if !get(g:, 'gitgutter_enabled', 0) || empty(FugitiveHead())
+        return ''
+    endif
+    let [ l:added, l:modified, l:removed ] = GitGutterGetHunkSummary()
+    return printf('+%d ~%d -%d', l:added, l:modified, l:removed)
+endfunction
+
+function! LightlineGitFugitive()
+    if empty(FugitiveHead())
+        return ''
+    endif
+    return ' '.FugitiveHead()
+endfunction
+
+function! LightlineFilename()
+    let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+    let modified = &modified ? ' [+]' : ''
+    return filename . modified
+endfunction
+
+function! NearestMethodOrFunction() abort
+    return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
 
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
-
-let g:goyo_width = 100
-let g:goyo_height = 150
-function! s:goyo_enter()
-  if executable('tmux') && strlen($TMUX)
-    silent !tmux set status off
-    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
-  endif
-  set noshowmode
-  set noshowcmd
-  set scrolloff=999
-  Limelight
-  " ...
-endfunction
-
-function! s:goyo_leave()
-  if executable('tmux') && strlen($TMUX)
-    silent !tmux set status on
-    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
-  endif
-  set showmode
-  set showcmd
-  set scrolloff=5
-  hi SignColumn ctermfg=NONE guibg=NONE
-  hi Normal ctermbg=NONE guibg=NONE
-  Limelight!
-  " ...
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-endif
-
-source $HOME/.config/nvim/my-scheme.vim
