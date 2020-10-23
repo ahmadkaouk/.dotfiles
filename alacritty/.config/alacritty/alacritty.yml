@@ -42,28 +42,28 @@ colors:
   #  - { index: 16, color: '0x000000' }
 font:
   normal:
-    family: DejaVu Sans Mono for Powerline
-    style: Book
+    family: MesloLGL Nerd Font
+    style: Regular
   bold:
-    family: Hack 
-    style: Semibold
+    family: MesloLGL Nerd Font
+    style: Bold
   italic:
-    family: Hack 
+    family: MesloLGL Nerd Font 
     style: Italic
 
   # Point size
-  size: 12
+  size: 13
 
   offset:
-    x: 0
-    y: 5
+    x: 1
+    y: 3
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
   # increasing `y` moves the glyph upwards.
   glyph_offset:
     x: 0
-    y: 0
+    y: 3
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.

@@ -20,6 +20,8 @@ Plug 'preservim/tagbar'
 " Themes
 Plug 'Morhetz/gruvbox'
 Plug 'lifepillar/vim-solarized8'
+Plug 'haishanh/night-owl.vim'
+Plug 'bluz71/vim-nightfly-guicolors' 
 Plug 'overcache/NeoSolarized'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
@@ -105,11 +107,12 @@ syntax enable
 syntax on
 set termguicolors
 set background=dark
+colorscheme gruvbox
 let g:neosolarized_contrast = "high"
 let g:neosolarized_bold = 1
 let g:neosolarized_underline = 1
 let g:neosolarized_italic = 0
-colorscheme Neosolarized
+let g:neosolarized_termBoldAsBright = 1
 
 hi Normal guibg=NONE ctermbg=NONE
 hi VertSplit ctermbg=NONE guibg=NONE
@@ -123,7 +126,7 @@ set laststatus=2
 set noshowmode
 " Lightline Settings
 let g:lightline = {
-  \ 'colorscheme': 'solarized',
+  \ 'colorscheme': 'gruvbox',
   \ 'active': {
   \   'left': [['mode', 'paste'],
   \            ['zoom', 'githunks', 'gitbranch', 'readonly', 'filename', 'method']],
