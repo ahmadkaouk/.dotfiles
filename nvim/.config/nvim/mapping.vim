@@ -64,3 +64,5 @@ nmap <leader>kf  <Plug>(coc-format-selected)
 
 " Show all diagnostics.
 nnoremap <silent><nowait> <leader>e  :<C-u>CocList diagnostics<cr>
+set tags=tags
+autocmd BufWritePost *.py silent! !ctags -R --python-kinds=-i --languages=python 2&gt; /dev/null &amp;

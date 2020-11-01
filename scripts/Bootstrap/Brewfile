@@ -8,7 +8,6 @@ tap "homebrew/cask-fonts"   # Just needed for font casks below
 brew "mas"
 
 ## Fundamentals
-brew "coreutils"
 brew "git"
 
 brew "python3"
@@ -22,10 +21,8 @@ brew "htop"
 brew "ytop"
 
 # FIND
-brew "findutils"
 brew "fzf"
 brew "ripgrep"
-brew "the_silver_searcher"
 brew "fd"
 
 # NeoVim
@@ -49,14 +46,12 @@ cask "vlc"
 
 ## Productivity
 cask "google-backup-and-sync"
-cask "google-chrome"
 cask "firefox"
 cask "typora"
 
 ## Developement
 cask "kitty"
 cask "alacritty"
-cask "gitkraken"
 
 ### Fonts
 cask "font-fira-code"

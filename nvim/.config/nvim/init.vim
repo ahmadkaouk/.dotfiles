@@ -1,47 +1,45 @@
-" auto-install vim-plug
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if exists('g:vscode')
+else
+    " auto-install vim-plug
+    if empty(glob('~/.config/nvim/autoload/plug.vim'))
+      silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+            \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    endif
+
+    call plug#begin('~/.config/nvim/autoload/plugged')
+    " Better Syntax Support
+    Plug 'sheerun/vim-polyglot'
+
+    " Appearence
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'tpope/vim-surround'
+    Plug 'Yggdroot/indentLine'
+
+    " Intellisence
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'preservim/tagbar'
+
+    " Themes
+    Plug 'Morhetz/gruvbox'
+    Plug 'ntk148v/vim-horizon'
+    Plug 'lifepillar/vim-solarized8'
+    Plug 'itchyny/lightline.vim'
+    Plug 'mengelbrecht/lightline-bufferline'
+
+    " Git
+    Plug 'tpope/vim-fugitive'
+    Plug 'junegunn/gv.vim'
+
+    " FZF
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+    Plug 'airblade/vim-rooter'
+    call plug#end()
+
+    source $HOME/.config/nvim/fzf.vim
+    source $HOME/.config/nvim/coc.vim
+    source $HOME/.config/nvim/mapping.vim
 endif
-
-call plug#begin('~/.config/nvim/autoload/plugged')
-" Better Syntax Support
-Plug 'sheerun/vim-polyglot'
-
-" Appearence
-Plug 'ryanoasis/vim-devicons'
-Plug 'tpope/vim-surround'
-Plug 'Yggdroot/indentLine'
-
-" Intellisence
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'preservim/tagbar'
-
-" Themes
-Plug 'Morhetz/gruvbox'
-Plug 'lifepillar/vim-solarized8'
-Plug 'haishanh/night-owl.vim'
-Plug 'bluz71/vim-nightfly-guicolors' 
-Plug 'overcache/NeoSolarized'
-Plug 'itchyny/lightline.vim'
-Plug 'mengelbrecht/lightline-bufferline'
-Plug 'jackguo380/vim-lsp-cxx-highlight'
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'bfrg/vim-cpp-modern'
-
-" Git
-Plug 'tpope/vim-fugitive'
-Plug 'junegunn/gv.vim'
-
-" FZF
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-rooter'
-call plug#end()
-
-source $HOME/.config/nvim/fzf.vim
-source $HOME/.config/nvim/coc.vim
-source $HOME/.config/nvim/mapping.vim
 " ============================================================================ "
 " ===                           GENERAL OPTIONS                            === "
 " ============================================================================ "
@@ -104,15 +102,9 @@ filetype plugin indent on
 " ============================================================================ "
 
 syntax enable
-syntax on
 set termguicolors
 set background=dark
 colorscheme gruvbox
-let g:neosolarized_contrast = "high"
-let g:neosolarized_bold = 1
-let g:neosolarized_underline = 1
-let g:neosolarized_italic = 0
-let g:neosolarized_termBoldAsBright = 1
 
 hi Normal guibg=NONE ctermbg=NONE
 hi VertSplit ctermbg=NONE guibg=NONE
@@ -129,7 +121,7 @@ let g:lightline = {
   \ 'colorscheme': 'gruvbox',
   \ 'active': {
   \   'left': [['mode', 'paste'],
-  \            ['zoom', 'githunks', 'gitbranch', 'readonly', 'filename', 'method']],
+  \            ['zoom', 'readonly', 'filename', 'method']],
   \   'right': [[ 'lineinfo'],
   \             ['percent'],
   \             ['filetype']]
@@ -146,15 +138,13 @@ let g:lightline = {
   \ },
   \ 'component_function': {
   \   'zoom': 'zoom#statusline',
-  \   'githunks': 'LightlineGitGutter',
-  \   'gitbranch': 'LightlineGitFugitive',
   \   'filename': 'LightlineFilename',
   \   'method': 'NearestMethodOrFunction',
   \   'fileformat': 'LightlineFileformat',
   \   'filetype': 'LightlineFiletype'
   \ },
-  \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-  \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+  \ 'separator': { 'left': "\ue0b0" },
+  \ 'subseparator': { 'left': "\ue0b1"}
   \ }
 
 let g:lightline#bufferline#filename_modifier = ':t'
@@ -163,21 +153,6 @@ let g:lightline#bufferline#min_buffer_count = 1
 let g:lightline#bufferline#show_number      = 1
 let g:lightline#bufferline#unicode_symbols  = 1
 let g:lightline#trailing_whitespace#indicator = '¥'
-
-function LightlineGitGutter()
-    if !get(g:, 'gitgutter_enabled', 0) || empty(FugitiveHead())
-        return ''
-    endif
-    let [ l:added, l:modified, l:removed ] = GitGutterGetHunkSummary()
-    return printf('+%d ~%d -%d', l:added, l:modified, l:removed)
-endfunction
-
-function! LightlineGitFugitive()
-    if empty(FugitiveHead())
-        return ''
-    endif
-    return ' '.FugitiveHead()
-endfunction
 
 function! LightlineFilename()
     let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
@@ -188,7 +163,3 @@ endfunction
 function! NearestMethodOrFunction() abort
     return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
-
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
