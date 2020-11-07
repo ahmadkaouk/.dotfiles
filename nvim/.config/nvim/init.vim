@@ -15,21 +15,19 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
 " {{{ Appearence
 "     ========
-
+    Plug 'sainnhe/gruvbox-material'
     Plug 'ryanoasis/vim-devicons'
-
-    Plug 'Yggdroot/indentLine'
-    Plug 'Morhetz/gruvbox'
+    "Syntax Highliting
+    Plug 'sheerun/vim-polyglot'
     Plug 'vim-airline/vim-airline'
-    Plug 'itchyny/lightline.vim'
-    Plug 'mengelbrecht/lightline-bufferline'
-
+    Plug 'vim-airline/vim-airline-themes'
 " }}}
 
 " {{{ Git
 "     ========
 
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim'
 
 " }}}
@@ -123,10 +121,17 @@ let g:fzf_colors =
 Plug 'scrooloose/nerdtree'
 
 " OPTIONS:
-
+let NERDTreeMinimalUI = 1
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = ''
 " Get rid of objects in C projects
 let NERDTreeIgnore=['\~$', '.o$', 'bower_components', 'node_modules', '__pycache__']
-
+augroup nerdtreehidecwd
+  autocmd!
+  autocmd FileType nerdtree setlocal conceallevel=3
+          \ | syntax match NERDTreeHideCWD #^[</].*$# conceal
+          \ | setlocal concealcursor=n
+augroup end
 " }}}
 
 " {{{ netrw: Configuration
@@ -177,19 +182,13 @@ set nowritebackup                       " This is recommended by coc
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
+set encoding=UTF-8
 " Persistent undo
 " Don't forget mkdir folder $HOME/.vim/undo
 set undofile
 set undodir=$HOME/.config/nvim/undo
 set undolevels=1000
 set undoreload=10000
-
-" IndentLine
-let g:indentLine_enabled = 1
-let g:indentLine_concealcursor = 0
-let g:indentLine_char = '▏'
-let g:indentLine_faster = 1
-
 
 " }}}
 
@@ -200,11 +199,11 @@ set noshowmode
 set termguicolors
 set background=dark
 
-colorscheme gruvbox
+colorscheme gruvbox-material
 hi Normal guibg=NONE ctermbg=NONE
 hi VertSplit ctermbg=NONE guibg=NONE
 hi NonText ctermbg=NONE guibg=NONE
-hi LineNr guifg=NONE guibg=NONE
+hi LineNr guibg=NONE 
 hi SignColumn ctermfg=NONE guibg=NONE
 hi EndOfBuffer ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#111111
 
@@ -227,8 +226,8 @@ nnoremap <C-n> :cn<CR>
 nnoremap <C-p> :cp<CR>
 
 " Newlines
-nnoremap <C-j> o<ESC>k
-nnoremap <C-k> O<ESC>j
+nnoremap ,j o<ESC>k
+nnoremap ,k O<ESC>j
 
 " Easy header/source swap
 nnoremap [f :call SourceHeaderSwap()<CR>
@@ -374,53 +373,22 @@ endfunction
 command! MakeTags !ctags -R .
 " }}}
 
-" Lightline Settings {{{
-let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
-  \ 'active': {
-  \   'left': [['mode', 'paste'],
-  \            ['zoom', 'readonly', 'filename', 'method']],
-  \   'right': [[ 'lineinfo'],
-  \             ['percent'],
-  \             ['filetype']]
-  \ },
-  \ 'tabline': {
-  \   'left': [['buffers']],
-  \   'right': [['']]
-  \ },
-  \ 'component_expand': {
-  \   'buffers': 'lightline#bufferline#buffers'
-  \ },
-  \ 'component_type': {
-  \   'buffers': 'tabsel'
-  \ },
-  \ 'component_function': {
-  \   'zoom': 'zoom#statusline',
-  \   'filename': 'LightlineFilename',
-  \   'method': 'NearestMethodOrFunction',
-  \   'fileformat': 'LightlineFileformat',
-  \   'filetype': 'LightlineFiletype'
-  \ },
-  \ 'separator': { 'left': "\ue0b0" },
-  \ 'subseparator': { 'left': "\ue0b1"}
-  \ }
+" Airline  {{{
 
-let g:lightline#bufferline#filename_modifier = ':t'
-let g:lightline#bufferline#shorten_path = 0
-let g:lightline#bufferline#min_buffer_count = 1
-let g:lightline#bufferline#show_number      = 1
-let g:lightline#bufferline#unicode_symbols  = 1
-let g:lightline#trailing_whitespace#indicator = '¥'
+let g:airline_powerline_fonts = 0
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline_theme = 'bubblegum'
+" Fancy Symbols!!
 
-function! LightlineFilename()
-    let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-    let modified = &modified ? ' [+]' : ''
-    return filename . modified
-endfunction
+    let g:webdevicons_enable = 1
 
-function! NearestMethodOrFunction() abort
-    return get(b:, 'vista_nearest_method_or_function', '')
-endfunction
+    " custom airline symbols
+    if !exists('g:airline_symbols')
+       let g:airline_symbols = {}
+    endif
+    let g:airline_left_sep = ''
+    let g:airline_left_alt_sep = ''
+    let g:airline_right_sep = ''
+    let g:airline_right_alt_sep = ''
 
-let g:airline#extensions#tabline#enabled = 1
 " }}}
