@@ -32,11 +32,6 @@ brew "node"
 
 # Dev
 brew "lazygit" 
-brew "lazydocker"
-
-# Window Manager
-brew "yabai"
-brew "skhd"
 
 ### Applications
 ## Media
@@ -50,9 +45,9 @@ cask "firefox"
 cask "typora"
 
 ## Developement
+cask "code-insiders"
 cask "kitty"
-cask "alacritty"
 
 ### Fonts
-cask "font-fira-code"
-cask "font-saucecodepro-nerd-font"
+cask "font-jetbrains-mono"
+cask "font-meslo-lg-nerd-font"

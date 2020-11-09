@@ -36,35 +36,11 @@ install_pynvim() { \
     pip3 install pynvim
 }
 
-dotfiles(){
-    /usr/bin/git --git-dir="${HOME}/.dotfiles/" --work-tree="$HOME" "$@"
-}
-
 # Clone dotfiles repos into new dir ${HOME}/.dotfiles
 donwload_dotfiles(){
     if [[ ! -d "$DOTFILES_DIR" ]]; then
         git clone --bare https://github.com/ahmadkaouk/Dotfiles.git "$DOTFILES_DIR/"
     fi
-}
-
-checkout_dotfiles(){
-    if dotfiles checkout; then
-        echo "Checked out dotfiles"
-    else
-        echo "Backup old dotfiles..."
-        mkdir -p .dotfiles-backup &&  dotfiles checkout 2>&1 | egrep "\s+\." | awk '{print $1}' | xargs -I{} mv {} .dotfiles-backup/{}
-        dotfiles checkout
-    fi
-}
-
-install_nvim_coc_extensions(){
-    # Install extensions
-    mkdir -p ~/.config/coc/extensions
-    cd ~/.config/coc/extensions
-    [ ! -f package.json ] && echo '{"dependencies":{}}'> package.json
-    # Change extension names to the extensions you need
-    # sudo npm install coc-explorer coc-snippets coc-json coc-actions --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
-    sudo npm install coc-explorer coc-snippets coc-json coc-actions --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
 }
 
 install_neovim_dependencies(){
@@ -89,18 +65,8 @@ main(){
     # Install Neovim dependencies
     install_neovim_dependencies
 
-    # Config dotfiles
-    echo_info "Configuring dotfiles..."
-    echo ".dotfiles" >> "${HOME}/.gitignore"
     # Clone dotfiles repos to home directory
     donwload_dotfiles
-    # Checkout dotfiles (Backup existing config files if exist)
-    checkout_dotfiles
-    # Hide untracked files
-    dotfiles config status.showUntrackedFiles "no"
-
-    # Install Nvim CoC Extensions
-    install_nvim_coc_extensions
 }
 
 main

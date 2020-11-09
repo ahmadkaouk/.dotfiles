@@ -15,12 +15,15 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
 " {{{ Appearence
 "     ========
+
     Plug 'sainnhe/gruvbox-material'
+    Plug 'skielbasa/vim-material-monokai'
     Plug 'ryanoasis/vim-devicons'
     "Syntax Highliting
     Plug 'sheerun/vim-polyglot'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+
 " }}}
 
 " {{{ Git
@@ -192,20 +195,19 @@ set undoreload=10000
 
 " }}}
 
-" {{{ Syntax Hilighting
+" {{{ Syntax Highlighting
 
 " Syntax hilighting
 set noshowmode
 set termguicolors
 set background=dark
 
-colorscheme gruvbox-material
+colorscheme material-monokai
 hi Normal guibg=NONE ctermbg=NONE
 hi VertSplit ctermbg=NONE guibg=NONE
-hi NonText ctermbg=NONE guibg=NONE
 hi LineNr guibg=NONE 
 hi SignColumn ctermfg=NONE guibg=NONE
-hi EndOfBuffer ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#111111
+hi EndOfBuffer ctermbg=NONE guibg=NONE guifg=#171717
 
 " }}}
 
@@ -235,12 +237,8 @@ nnoremap [f :call SourceHeaderSwap()<CR>
 " Select the stuff I just pasted
 nnoremap gV `[V`]
 
-" Editing vimrc
-nnoremap ,v :source $MYVIMRC<CR>
-nnoremap ,e :edit $MYVIMRC<CR>
-
 " Quickly change search hilighting
-nnoremap <silent> ; :set invhlsearch<CR>
+nnoremap <silent>; noh<CR>
 
 " Change indent continuously
 vmap < <gv
@@ -276,7 +274,7 @@ noremap <leader>p :History<CR>
 noremap <leader>f :BLines<CR>
 noremap <leader>F :Rg!<CR>
 noremap <leader>g :GFiles<CR>
-noremap <leader>e :NERDTreeToggle<CR>
+noremap ,e :NERDTreeToggle<CR>
 
 " Split window
 nmap <leader>b :split<Return><C-w>w
@@ -377,18 +375,21 @@ command! MakeTags !ctags -R .
 
 let g:airline_powerline_fonts = 0
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline_theme = 'bubblegum'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_section_y = ''
 " Fancy Symbols!!
 
-    let g:webdevicons_enable = 1
+let g:webdevicons_enable = 1
 
-    " custom airline symbols
-    if !exists('g:airline_symbols')
-       let g:airline_symbols = {}
-    endif
-    let g:airline_left_sep = ''
-    let g:airline_left_alt_sep = ''
-    let g:airline_right_sep = ''
-    let g:airline_right_alt_sep = ''
+" custom airline symbols
+if !exists('g:airline_symbols')
+   let g:airline_symbols = {}
+endif
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = '/'
 
 " }}}

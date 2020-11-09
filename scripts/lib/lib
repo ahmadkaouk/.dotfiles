@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 ## \mainpage
 ## \section Introduction
 ## The os_lib that acts as a library for bash scripts. It provides
@@ -35,37 +34,37 @@ declare -rxa LINUX_OS="(Linux FreeBSD OpenBSD SunOS)" 2>/dev/null;
 ## @function
 
 ## Log info message
-echo_info() {
+info() {
   local msg="$1"; shift
   printf "\e[1;32m%s\e[0m\\n" "$msg"
 }
 
-echo_error(){
+error(){
   local msg="$1";
   printf "\e[1;31mError: %s\e[0m\\n" "$msg" 1>&2
 }
 
 install_or_update_brew(){
   if  [[ ! "$(command -v brew)" ]] ; then
-    echo_info "Installing homebrew..."
+    info "Installing homebrew..."
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   else
-    echo_info "Updating Homebrew..."
+    info "Updating Homebrew..."
     brew update
   fi
 }
 
 install_packages_osx(){
   # Install Packages defined in Brewfile
-  echo_info "OSX packages..."
+  info "OSX packages..."
   install_or_update_brew
   brew bundle
 
   # Remove outdated versions from the cellar
-  echo_info "Cleaning up..."
+  info "Cleaning up..."
   brew cleanup
 
-  echo_info "Package Installation complete"
+  info "Package Installation complete"
 }
 
 install_packages_ubuntu(){
@@ -74,34 +73,6 @@ install_packages_ubuntu(){
     zsh tmux bat tree htop ytop lazygit \
     fzf ripgrep silversearcher-ag fd-find unerversal-ctags \
     nodejs npm neovim
-}
-
-# Install VS Code
-install_vs_code(){
-    [ "$(uname)" == "Darwin" ] && brew cask install visual-studio-code
-    [  -n "$(uname -a | grep Ubuntu)" ] && sudo apt install visual-studio-code
-
-    # Installing VS code Extensions
-    echo_info "Installing Extensions for Vscode..."
-    local extensions=(
-    akamud.vscode-theme-onedark
-    jolaleye.horizon-theme-vscode
-    ms-vscode-remote.remote-containers
-    ms-vscode-remote.remote-ssh
-    ms-vscode-remote.remote-ssh-edit
-    ms-vscode-remote.vscode-remote-extensionpack
-    ms-vscode.cpptools
-    PKief.material-icon-theme
-    rafamel.subtle-brackets
-    timonwong.shellcheck
-  )
-
-  for extension in "${extensions[@]}"; do
-    if ! code --list-extensions | grep "$extension" > /dev/null; then
-      code --install-extension "$extension" 
-    fi
-  done
-  defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 }
 
 zsh_config(){
