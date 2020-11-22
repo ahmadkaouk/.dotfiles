@@ -16,14 +16,15 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 " {{{ Appearence
 "     ========
 
-    Plug 'sainnhe/gruvbox-material'
     Plug 'skielbasa/vim-material-monokai'
+    Plug 'sickill/vim-monokai'
+    Plug 'phanviet/vim-monokai-pro'
     Plug 'ryanoasis/vim-devicons'
     "Syntax Highliting
     Plug 'sheerun/vim-polyglot'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-
+    Plug 'Yggdroot/indentLine'
 " }}}
 
 " {{{ Git
@@ -37,7 +38,6 @@ Plug 'junegunn/gv.vim'
 
 " {{{ Intellisence
 "     ========
-
 Plug 'preservim/tagbar'
 
 " }}}
@@ -152,18 +152,19 @@ command! MakeTags !ctags -R .
 set noshowmode
 set termguicolors
 set background=dark
-
-colorscheme material-monokai
+colorscheme monokai_pro
 hi Normal guibg=NONE ctermbg=NONE
 hi VertSplit ctermbg=NONE guibg=NONE
 hi LineNr guibg=NONE 
 hi SignColumn ctermfg=NONE guibg=NONE
 hi EndOfBuffer ctermbg=NONE guibg=NONE guifg=#171717
 
+let g:indentLine_char_list = ['│']
 " }}}
 
 " Airline  {{{
 
+let g:airline#extensions#tabline#enabled = 1 
 let g:airline_powerline_fonts = 0
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#formatter = 'unique_tail'
@@ -174,14 +175,13 @@ let g:airline_section_y = ''
 
 let g:webdevicons_enable = 1
 
+let g:airline = {
+      \ 'colorscheme': 'monokai_pro',
+      \ }
 " custom airline symbols
 if !exists('g:airline_symbols')
    let g:airline_symbols = {}
 endif
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = '/'
 
 " }}}
 
@@ -250,6 +250,8 @@ nnoremap ,! q:k0ea!<ESC>
 let mapleader = " "
 
 " Like Vscode
+nnoremap ,s :w<CR>
+nnoremap ,q :q<CR>
 noremap <leader>o :Files<CR>
 noremap <leader>p :History<CR>
 noremap <leader>f :BLines<CR>
@@ -303,6 +305,15 @@ function! MyPrev()
     endif
 endfunction
 " }}}
+
+" }}}
+
+" {{{ Javascript
+
+"augroup javascript_folding
+"    au!
+"    au FileType javascript setlocal foldmethod=syntax
+"augroup END
 
 " }}}
 
