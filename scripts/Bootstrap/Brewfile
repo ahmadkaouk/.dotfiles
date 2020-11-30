@@ -14,39 +14,35 @@ brew "python3"
 ## SHELL
 brew "zsh"
 
-# Utilities
-brew "tmux"
-brew "tree"
-brew "htop"
-brew "ytop"
+### System
+## Utilities
 brew "pass"
+brew "tree"
+brew "tmux"
 
 # Task Manager
 brew "task"
 brew "taskd"
 
-# FIND
+# Search
 brew "fzf"
 brew "ripgrep"
 brew "fd"
+brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 
 # NeoVim
 brew "neovim"
-brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 
 # Dev
-brew "lazygit" 
 brew "delta"
 
 ### Applications
 ## Media
 cask "calibre"
 cask "spotify"
-cask "vlc"
 
 ## Productivity
 cask "google-backup-and-sync"
-cask "firefox"
 cask "typora"
 
 ## Developement
