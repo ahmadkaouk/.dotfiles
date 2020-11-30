@@ -100,3 +100,9 @@ nnoremap <leader>p :cprevious<CR>
 " Commands {{{
 command! MakeTags !ctags -R .  " Create the `tags` file  
 " }}}
+
+" Overrrides "
+let s:vimrc_local = $HOME . '/.vimrc.local'
+if filereadable(s:vimrc_local)
+  execute 'source ' . s:vimrc_local
+endif
