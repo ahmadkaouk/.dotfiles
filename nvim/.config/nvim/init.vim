@@ -49,10 +49,14 @@ let g:netrw_list_hide=netrw_gitignore#Hide()
 
 " {{{ Syntax Highlighting
 set termguicolors
-colorscheme aylin
-set tabline=%!statusline#tabline()
-let g:buftabline_indicators=1
-hi EndOfBuffer ctermbg=NONE guibg=NONE guifg=#171717
+colorscheme molokai
+hi VertSplit guibg=NONE
+hi LineNr guibg=NONE guifg=#666467 
+hi SignColumn ctermfg=NONE guibg=NONE
+hi Normal ctermfg=NONE guibg=NONE
+hi StatusLine guifg=#262226 guibg=#7D7D7D cterm=NONE
+hi StatusLineNC guifg=#262226 guibg=#7D7D7D cterm=NONE
+hi EndOfBuffer guibg=NONE guifg=#191919
 " }}}
 
 " Key Mappings {{{
@@ -72,6 +76,8 @@ vmap > >gv
 cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
 
+" Explorer
+nnoremap ,e :Lexplore<CR>
 " Bindings for more efficient path-based file navigation
 nnoremap ,f :find *
 nnoremap ,v :vert sfind *
