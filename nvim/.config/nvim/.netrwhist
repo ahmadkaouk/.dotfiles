@@ -1,12 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =8
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/Users/ahmad/.vim/plugged/indentLine'
+let g:netrw_dirhist_1='/Users/ahmad/.vim/plugged'
+let g:netrw_dirhist_0='/Users/ahmad/.vim'
+let g:netrw_dirhist_9='/Users/ahmad'
 let g:netrw_dirhist_8='/Users/ahmad/.dotfiles/nvim/.config/nvim/colors'
 let g:netrw_dirhist_7='/Users/ahmad/.dotfiles/nvim/.config/nvim'
 let g:netrw_dirhist_6='/Users/ahmad/.dotfiles/nvim/.config'
 let g:netrw_dirhist_5='/Users/ahmad/.dotfiles/nvim'
 let g:netrw_dirhist_4='/Users/ahmad/.dotfiles'
 let g:netrw_dirhist_3='/Users/ahmad/.dotfiles/nvim/.config/nvim/colors'
-let g:netrw_dirhist_2='/Users/ahmad/.dotfiles/nvim/.config/nvim'
-let g:netrw_dirhist_1='/Users/ahmad/.dotfiles/nvim/.config'
-let g:netrw_dirhist_0='/Users/ahmad/.dotfiles/nvim'
-let g:netrw_dirhist_9='/Users/ahmad/.dotfiles'
