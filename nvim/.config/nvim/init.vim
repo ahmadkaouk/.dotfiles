@@ -29,7 +29,7 @@ set grepformat^=%f:%l:%c:%m
 set wildmenu                    " Show file options above the cmd
 set wildmode=longest:full,full
 set wildignorecase
-set wildignore=.git/,.tags,tags
+set wildignore=.git/,.tags,tags,*/node_modules/*
 
 " Options
 set mouse=a                     " Enable your mouse
@@ -104,7 +104,8 @@ nnoremap <leader>p :cprevious<CR>
 " }}}
 
 " Commands {{{
-command! MakeTags !ctags -R .  " Create the `tags` file  
+" Create the `tags` file  
+command! MakeTags !ctags -R .  
 " }}}
 
 " Overrrides "
