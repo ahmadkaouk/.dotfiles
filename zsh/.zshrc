@@ -27,6 +27,7 @@ _comp_options+=(globdots)
 
 # Aliases 
 alias v="nvim"
+alias code="code-insiders"
 alias rmf="rm -rf"
 alias cc="clear"
 alias ..='cd ..'
