@@ -9,8 +9,8 @@ brew "mas"
 
 ## Fundamentals
 brew "git"
-
 brew "python3"
+
 ## SHELL
 brew "zsh"
 
@@ -19,10 +19,6 @@ brew "zsh"
 brew "pass"
 brew "tree"
 brew "tmux"
-
-# Task Manager
-brew "task"
-brew "taskd"
 
 # Search
 brew "fzf"
