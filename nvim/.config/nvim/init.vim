@@ -14,7 +14,7 @@ let $MYVIMDIR="~/.config/nvim"
 set path=.,**                  " Search relative to current file + directory
 set shell=/usr/local/bin/zsh
 set ignorecase smartcase        " Faster Search
-set relativenumber cursorline   " Appearence
+set cursorline                  " Appearence
 set hidden                      " Required to keep multiple buffers open multiple buffers
 set noswapfile                  " noswapefile period
 set sw=4 ts=4 sts=4 expandtab   " Indentation default
@@ -54,7 +54,7 @@ hi VertSplit guibg=NONE
 hi LineNr guibg=NONE guifg=#666467 
 hi SignColumn ctermfg=NONE guibg=NONE
 hi Normal ctermfg=NONE guibg=NONE
-hi StatusLine guifg=#262226 guibg=#7D7D7D cterm=NONE
+hi StatusLine guifg=#191919 guibg=#7D7D7D cterm=NONE
 hi StatusLineNC guifg=#262226 guibg=#7D7D7D cterm=NONE
 hi EndOfBuffer guibg=NONE guifg=#191919
 " }}}
