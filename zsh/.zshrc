@@ -10,6 +10,7 @@ export ZSH="${HOME}/.oh-my-zsh"
 plugins=(
 	git
 	tmux
+	docker docker-compose
 	zsh-syntax-highlighting
 	zsh-autosuggestions
 )
