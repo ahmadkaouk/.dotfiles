@@ -32,6 +32,10 @@ brew "neovim"
 # Dev
 brew "delta"
 
+## Document Viewer
+brew "zathura", args: ['HEAD'] 
+brew "girara", args: ['HEAD'] 
+
 ### Applications
 ## Media
 cask "calibre"
@@ -40,7 +44,7 @@ cask "spotify"
 ## Productivity
 cask "google-backup-and-sync"
 cask "typora"
-
+brew 'ruby-build', args: ['HEAD'] 
 ## Developement
 cask "code-insiders"
 cask "kitty"
