@@ -15,13 +15,12 @@ plugins=(
 	zsh-autosuggestions
 )
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
 export EDITOR=nvim
 source $ZSH/oh-my-zsh.sh
 
 # History in cache directory:
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 
 # Include hidden files.
 _comp_options+=(globdots)
@@ -47,8 +46,4 @@ export FZF_ALT_C_COMMAND="fd --hidden -t d . $HOME"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# Load local zsh config
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+eval "$(starship init zsh)"

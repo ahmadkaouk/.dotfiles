@@ -13,6 +13,7 @@ brew "python3"
 
 ## SHELL
 brew "zsh"
+brew "spaceship"
 
 ### System
 ## Utilities
