@@ -4,7 +4,7 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
+ZSH_THEME="powerlevel10k/powerlevel10k"
 export ZSH="${HOME}/.oh-my-zsh"
 # plugins
 plugins=(
@@ -46,4 +46,5 @@ export FZF_ALT_C_COMMAND="fd --hidden -t d . $HOME"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-eval "$(starship init zsh)"
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
