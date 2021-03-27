@@ -1,55 +1,49 @@
 # Brewfile
 cask_args appdir: "/Applications"
 
-tap "homebrew/cask-fonts"   # Just needed for font casks below
-
-### Packages
-## Mac App Store Installer
-brew "mas"
-
 ## Fundamentals
 brew "git"
 brew "python3"
 
 ## SHELL
 brew "zsh"
-brew "spaceship"
 
-### System
+# System
 ## Utilities
 brew "pass"
 brew "tree"
 brew "tmux"
+brew "tldr"
 
-# Search
-brew "fzf"
+## Search
 brew "ripgrep"
 brew "fd"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 
-# NeoVim
-brew "neovim"
-
 # Dev
+brew "neovim"
 brew "delta"
 
 ## Document Viewer
 brew "zathura", args: ['HEAD'] 
 brew "girara", args: ['HEAD'] 
 
-### Applications
+# Applications
 ## Media
 cask "calibre"
 cask "spotify"
 
 ## Productivity
+cask "brave-browser"
 cask "google-backup-and-sync"
 cask "typora"
-brew 'ruby-build', args: ['HEAD'] 
+
 ## Developement
-cask "code-insiders"
-cask "kitty"
+cask "visual-studio-code"
+cask "iterm2"
+cask "drawio"
+cask "meld"
 
 ### Fonts
 cask "font-jetbrains-mono-nerd-font"
-cask "font-meslo-lg-nerd-font"
+cask "font-ubuntu-mono-nerd-font"
