@@ -4,11 +4,6 @@ filetype plugin indent on    " Add filetype, plugin and indent support
 syntax enable 
 "}}}
 
-" Variable Assignments {{{
-let $MYVIMRC="~/.config/nvim/init.vim"
-let $MYVIMDIR="~/.config/nvim"
-" }}}
-
 " {{{ Settings
 
 set path=.,**                  " Search relative to current file + directory

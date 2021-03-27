@@ -1,6 +1,0 @@
-# disable starship from forcing a new line to be taken. Solved the empty line 
-# at start of terminal
-add_newline = false
-
-[line_break]
-disabled = true
