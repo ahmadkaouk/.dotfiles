@@ -1,0 +1,7 @@
+stownit() {
+    stow -nvt ~ $1 
+}
+
+stowit() {
+    stow -vt ~ $1 
+}

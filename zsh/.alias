@@ -1,0 +1,13 @@
+# Programs
+alias v="nvim"
+alias code="code-insiders"
+# Navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+# Commands
+alias rgi="rg -i"
+alias rmf="rm -rf"
+alias cc="clear"
+alias tree='tree -a -I '.git''
