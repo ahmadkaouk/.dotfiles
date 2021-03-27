@@ -62,3 +62,4 @@ INSTALL "ZSH Syntax Highlighting" "${OMZ_PLUGINS}/zsh-syntax-highlighting"  "git
 INSTALL "Powerlevel10K" "${OMZ_THEMES}/powerlevel10k" "git clone --depth=1 https://github.com/romkatv/powerlevel10k.git"
 INSTALL "FZF" "${HOME}/.fzf" ]]  "git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install"
 
+[[ ! -d "${HOME}/.zshrc.local" ]] && touch "${HOME}/.zshrc.local"

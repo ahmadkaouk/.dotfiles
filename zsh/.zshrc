@@ -24,8 +24,8 @@ SAVEHIST=10000
 _comp_options+=(globdots)
 
 source $ZSH/oh-my-zsh.sh
-source .alias
-source .functions
+source ~/.alias
+source ~/.functions
 source ~/.fzf.zsh
 source ~/.p10k.zsh
 source ~/.zshrc.local

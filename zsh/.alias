@@ -1,6 +1,5 @@
 # Programs
 alias v="nvim"
-alias code="code-insiders"
 # Navigation
 alias ..='cd ..'
 alias ...='cd ../..'
