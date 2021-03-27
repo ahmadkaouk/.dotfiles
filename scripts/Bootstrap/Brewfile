@@ -22,7 +22,7 @@ brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 
 # Dev
 brew "neovim"
-brew "delta"
+brew "git-delta"
 
 ## Document Viewer
 brew "zathura", args: ['HEAD'] 
