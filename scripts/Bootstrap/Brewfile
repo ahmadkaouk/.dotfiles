@@ -47,3 +47,4 @@ cask "meld"
 ### Fonts
 cask "font-jetbrains-mono-nerd-font"
 cask "font-ubuntu-mono-nerd-font"
+cask "font-ibm-plex-mono"
