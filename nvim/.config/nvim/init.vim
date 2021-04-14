@@ -29,6 +29,7 @@ set clipboard+=unnamedplus      " Copy paste between vim and everything else
 set updatetime=300              " Faster completion
 set timeoutlen=300              " By default timeoutlen is 1000 ms
 
+set termguicolors
 hi VertSplit ctermbg=NONE
 hi SignColumn ctermfg=NONE guibg=NONE
 hi EndOfBuffer ctermbg=NONE cterm=NONE
