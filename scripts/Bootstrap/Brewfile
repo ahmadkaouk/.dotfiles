@@ -14,6 +14,7 @@ brew "pass"
 brew "tree"
 brew "tmux"
 brew "tldr"
+brew "bat"
 
 ## Search
 brew "ripgrep"
@@ -23,10 +24,6 @@ brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 # Dev
 brew "neovim"
 brew "git-delta"
-
-## Document Viewer
-brew "zathura", args: ['HEAD'] 
-brew "girara", args: ['HEAD'] 
 
 # Applications
 ## Media
