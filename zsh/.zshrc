@@ -15,7 +15,7 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --hidden -t d . $HOME"
 
-plugins=(git tmux docker docker-compose zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git tmux sudo docker docker-compose zsh-syntax-highlighting zsh-autosuggestions)
 ZSH_THEME="powerlevel10k/powerlevel10k"
 # History in cache directory:
 HISTSIZE=10000
