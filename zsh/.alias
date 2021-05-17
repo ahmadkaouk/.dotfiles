@@ -5,6 +5,10 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+# Exa
+alias ls="exa"
+alias lst="exa -T"
+alias lso="exa --oneline"
 # Commands
 alias rgi="rg -i"
 alias rmf="rm -rf"
