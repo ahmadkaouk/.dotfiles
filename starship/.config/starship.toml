@@ -1,0 +1,4 @@
+command_timeout = 5
+add_newline = false
+[line_break]
+disabled = true
