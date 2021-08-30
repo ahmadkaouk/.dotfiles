@@ -1,3 +1,5 @@
+shell:
+  program: /usr/bin/zsh
 window:
   padding:
     x: 10
@@ -8,28 +10,30 @@ font:
   normal:
     family: Cascadia Code PL
     style: Regular
-  size: 16.5
+  size: 12
   offset:
-    y: 5
+    y: 3
+  glyph_offset:
+    y: 0
 colors:
   primary:
-    background: "#1a1a1a"
-    foreground: "#c4c5b5"
+    background: "#0c0c0c"
+    foreground: "#ffffff"
   normal:
-    black: "#1a1a1a"
-    red: "#f4005f"
-    green: "#98e024"
-    yellow: "#fa8419"
-    blue: "#9d65ff"
-    magenta: "#f4005f"
-    cyan: "#58d1eb"
-    white: "#c4c5b5"
+    black: "#0c0c0c"
+    red: "#c50f1f"
+    green: "#13a10e"
+    yellow: "#c19c00"
+    blue: "#0037da"
+    magenta: "#881798"
+    cyan: "#3a96dd"
+    white: "#cccccc"
   bright:
-    black: "#625e4c"
-    red: "#f4005f"
-    green: "#98e024"
-    yellow: "#e0d561"
-    blue: "#9d65ff"
-    magenta: "#f4005f"
-    cyan: "#58d1eb"
-    white: "#f6f6ef"
+    black: "#767676"
+    red: "#e74856"
+    green: "#16c60c"
+    yellow: "#f9f1a5"
+    blue: "#3b78ff"
+    magenta: "#b4009e"
+    cyan: "#61d6d6"
+    white: "#f2f2f2"

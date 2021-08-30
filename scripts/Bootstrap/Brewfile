@@ -28,7 +28,6 @@ brew "git-delta"
 # Applications
 ## Media
 cask "calibre"
-cask "spotify"
 
 ## Productivity
 cask "brave-browser"

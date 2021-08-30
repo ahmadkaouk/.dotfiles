@@ -12,12 +12,8 @@ set sw=4 ts=4 sts=4 expandtab   " Indentation default
 set autoindent smartindent
 set nowrap                      " Don't break line
 set splitright splitbelow
-set undodir=~/.config/nvim/undo/undodir
+set undodir=~/.undo/undodir
 set undofile
-
-" Search
-set grepprg=rg\ --vimgrep
-set grepformat^=%f:%l:%c:%m
 
 " Navigation
 set wildmenu                    " Show file options above the cmd
@@ -41,28 +37,6 @@ nnoremap ,b :b <C-d>
 " Change indent continuously
 vmap < <gv
 vmap > >gv
-
-" Bindings for more efficient path-based file navigation
-nnoremap ,f :find *
-nnoremap ,v :vert sfind *
-nnoremap ,F :find <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
-nnoremap ,V :vert sfind <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
-" List all occurences in file
-nnoremap ,g :g//#<Left><Left>
-
-" Argslist navigation
-nnoremap [a :previous<CR>
-nnoremap ]a :next<CR>
-nnoremap [A :first<CR>
-nnoremap ]A :last<CR>
-
-" Symbol-based navigation
-nnoremap ,t :tjump /
-nnoremap ,d :dlist /
-nnoremap ,i :ilist /
-" QuickFix list navigation
-nnoremap ,n :cnext<CR>
-nnoremap ,p :cprevious<CR>
 
 " Overrrides "
 let s:vimrc_local = $HOME . '/.vimrc.local'

@@ -1,10 +1,5 @@
 # Programs
 alias v="nvim"
-# Navigation
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
 # Exa
 alias ls="exa"
 alias lst="exa -T"
