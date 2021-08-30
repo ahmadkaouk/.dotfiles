@@ -30,21 +30,10 @@ if [ "$(uname)" == "Darwin" ]; then
     INFO "Mac packages..."
     brew bundle
     brew cleanup
-    mkdir -p $(brew --prefix zathura)/lib/zathura
-    ln -s $(brew --prefix zathura-pdf-poppler)/libpdf-poppler.dylib $(brew --prefix zathura)/lib/zathura/libpdf-poppler.dylib
 fi
-if [  -n "$(uname -a | grep Ubuntu)" ]; then
+if [  -n "$(uname -a | grep -i Linux)" ]; then
     INFO "Ubuntu packages..."
-    ## Fundamentals
-    sudo apt install python3 \
-    # System 
-    zsh tmux htop ytop \
-    # Dev
-    nvim git delta \
-    ## Utilities
-    pass tree bat tldr \
-    ## Search
-    ripgrep fd-find unerversal-ctags \
+    sudo apt install python3 tmux htop neovim git delta autojump tree bat tldr ripgrep fd-find universal-ctags     
 fi
 
 # Make zsh default shell
@@ -60,6 +49,6 @@ INFO "Installing Oh-My-Zsh"
 INSTALL "Zsh Autosuggestions" "${OMZ_PLUGINS}/zsh-autosuggestions" "git clone https://github.com/zsh-users/zsh-autosuggestions"
 INSTALL "ZSH Syntax Highlighting" "${OMZ_PLUGINS}/zsh-syntax-highlighting"  "git clone https://github.com/zsh-users/zsh-syntax-highlighting"
 INSTALL "Powerlevel10K" "${OMZ_THEMES}/powerlevel10k" "git clone --depth=1 https://github.com/romkatv/powerlevel10k.git"
-INSTALL "FZF" "${HOME}/.fzf" ]]  "git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install"
+INSTALL "FZF" "${HOME}/.fzf"  "git clone --depth 1 https://githb.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install"
 
 [[ ! -d "${HOME}/.zshrc.local" ]] && touch "${HOME}/.zshrc.local"

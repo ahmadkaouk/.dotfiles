@@ -10,7 +10,6 @@ brew "zsh"
 
 # System
 ## Utilities
-brew "pass"
 brew "tree"
 brew "tmux"
 brew "tldr"
