@@ -30,10 +30,8 @@ set timeoutlen=300              " By default timeoutlen is 1000 ms
 set termguicolors
 inoremap kj <Esc>
 inoremap jk <Esc>
-
 " Faster buffer navigation
 nnoremap ,b :b <C-d> 
-
 " Change indent continuously
 vmap < <gv
 vmap > >gv
