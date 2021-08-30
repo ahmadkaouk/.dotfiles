@@ -14,6 +14,7 @@ brew "tree"
 brew "tmux"
 brew "tldr"
 brew "bat"
+brew "autojump"
 
 ## Search
 brew "ripgrep"
@@ -32,12 +33,15 @@ cask "calibre"
 cask "brave-browser"
 cask "google-backup-and-sync"
 cask "typora"
+cask "spark"
+cask "nextcloud"
 
 ## Developement
 cask "visual-studio-code"
 cask "iterm2"
 cask "drawio"
 cask "meld"
+
 
 ### Fonts
 cask "font-jetbrains-mono-nerd-font"
