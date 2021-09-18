@@ -23,3 +23,4 @@ source ~/.zshrc.local
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 eval "$(starship init zsh)"
+export PATH="/usr/local/opt/llvm/bin:$PATH"

@@ -1,39 +1,70 @@
-shell:
-  program: /usr/bin/zsh
 window:
   padding:
-    x: 10
-    y: 5
+    x: 7
+    y: 20
+  dynamic_padding: true
+  decorations: transparent
 scrolling:
   history: 10000
 font:
   normal:
-    family: Cascadia Code PL
-    style: Regular
-  size: 12
+    family: OperatorMono Nerd Font
+    style: Book
+  bold:
+    family: OperatorMono Nerd Font
+    style: Bold
+  size: 16
   offset:
-    y: 3
+    y: 8
   glyph_offset:
-    y: 0
+    y: 2
 colors:
   primary:
-    background: "#0c0c0c"
-    foreground: "#ffffff"
+    background: "#2D2A2E"
+    foreground: "#FCFCFA"
   normal:
-    black: "#0c0c0c"
-    red: "#c50f1f"
-    green: "#13a10e"
-    yellow: "#c19c00"
-    blue: "#0037da"
-    magenta: "#881798"
-    cyan: "#3a96dd"
-    white: "#cccccc"
+    black: "#403E41"
+    red: "#FF6188"
+    green: "#A9DC76"
+    yellow: "#FFD866"
+    blue: "#FC9867"
+    magenta: "#AB9DF2"
+    cyan: "#78DCE8"
+    white: "#FCFCFA"
   bright:
-    black: "#767676"
-    red: "#e74856"
-    green: "#16c60c"
-    yellow: "#f9f1a5"
-    blue: "#3b78ff"
-    magenta: "#b4009e"
-    cyan: "#61d6d6"
-    white: "#f2f2f2"
+    black: "#727072"
+    red: "#FF6188"
+    green: "#A9DC76"
+    yellow: "#FFD866"
+    blue: "#FC9867"
+    magenta: "#AB9DF2"
+    cyan: "#78DCE8"
+    white: "#FCFCFA"
+key_bindings:
+  - key: A
+    mods: Command
+    action: Quit
+  - key: Z
+    mods: Command
+    action: Quit
+  - key: L
+    mods: Alt|Shift
+    chars: "|"
+  - key: Key5
+    mods: Alt
+    chars: "{"
+  - key: Minus
+    mods: Alt
+    chars: "}"
+  - key: Key5
+    mods: Alt|Shift
+    chars: "["
+  - key: Minus
+    mods: Alt|Shift
+    chars: "]"
+  - key: N
+    mods: Alt
+    chars: "~"
+  - key: Period
+    mods: Alt|Shift
+    chars: \

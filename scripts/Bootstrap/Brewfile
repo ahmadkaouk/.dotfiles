@@ -38,7 +38,7 @@ cask "nextcloud"
 
 ## Developement
 cask "visual-studio-code"
-cask "iterm2"
+cask "kitty"
 cask "drawio"
 cask "meld"
 
@@ -46,4 +46,3 @@ cask "meld"
 ### Fonts
 cask "font-jetbrains-mono-nerd-font"
 cask "font-ubuntu-mono-nerd-font"
-cask "font-ibm-plex-mono"

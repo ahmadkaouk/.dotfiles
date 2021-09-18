@@ -1,5 +1,7 @@
 # Programs
 alias v="nvim"
+alias vs="nvr"
+alias vr="nvr -O"
 # Exa
 alias ls="exa"
 alias lst="exa -T"
