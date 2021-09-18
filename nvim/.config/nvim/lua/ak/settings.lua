@@ -104,9 +104,9 @@ map("n", "(t", ":tprevious<CR>")
 map("n", ")t", ":tnext<CR>")
 -----------------------------------------------------------------------------//
 -- Buffer and Window Management
-map("n", "<localleader>b", ":buffers<CR>:buffer ", { noremap = true, silent = false }) -- cycle through buffers 
+map("n", "<localleader>b", ":buffer <C-d> ", { noremap = true, silent = false }) -- cycle through buffers 
 map("n", "<localleader>w", ":w <CR>")        -- save file
-map("n", "<localleader>bw", ":bw <CR>")      -- quit buffer 
+map("n", "<localleader>c", ":bw <CR>")      -- quit buffer 
 map("n", "<localleader>q", ":q <CR>")        -- quit window 
 -- Indentation
 map("v", ">", ">gv")
