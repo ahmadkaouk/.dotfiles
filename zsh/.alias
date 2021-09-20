@@ -1,13 +1,21 @@
-# Programs
+# Neovim
 alias v="nvim"
-alias vs="nvr"
-alias vr="nvr -O"
+alias vs="nvr --servername"
+
 # Exa
 alias ls="exa"
 alias lst="exa -T"
 alias lso="exa --oneline"
+
 # Commands
-alias rgi="rg -i"
 alias rmf="rm -rf"
 alias cc="clear"
 alias tree='tree -a -I '.git''
+
+# Search
+alias rgi="rg -i"
+alias -g G="| rgi"
+
+# Output
+alias -g L="| less"
+alias -g B="| bat"
