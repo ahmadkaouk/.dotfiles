@@ -6,11 +6,3 @@ stowit() {
     stow -vt ~ $1 
 }
 
-vr() {
-    if [ "$0" != 2 ]
-    then
-        nvr "$1"
-    else
-        nvr --servername "$1" -O "$2"
-    fi
-}

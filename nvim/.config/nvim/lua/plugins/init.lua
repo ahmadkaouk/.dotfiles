@@ -25,9 +25,7 @@ return require('packer').startup(function()
         config = [[require('plugins.cmp')]],
         requires = {
             {'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp', },
-            {'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp', },
             { "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp", },
-            { "L3MON4D3/LuaSnip", after = "cmp-nvim-lsp", },
         },
     }
     -- Misc
@@ -36,6 +34,7 @@ return require('packer').startup(function()
     use { "tpope/vim-commentary", event = "BufRead", }
     use { "justinmk/vim-sneak", event = "BufRead", }
     use { 'lewis6991/gitsigns.nvim', event = "BufRead", config = [[gitsigns()]], }
-    use { "Pocco81/TrueZen.nvim", cmd = { "TZAtaraxis", "TZFocus", } }
-    use { "aserowy/tmux.nvim"  }
+    use { "folke/zen-mode.nvim", config = [[ require("zen-mode").setup() ]], cmd = 'ZenMode', }
+    use { 'numToStr/Navigator.nvim' }
+    use { 'sbdchd/neoformat', cmd = "Neoformat", }
 end)

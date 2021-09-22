@@ -1,6 +1,5 @@
 # Neovim
 alias v="nvim"
-alias vs="nvr --servername"
 
 # Exa
 alias ls="exa"

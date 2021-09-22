@@ -8,7 +8,7 @@ opt.timeoutlen = 400                -- time to wait for a mapped sequence to com
 opt.hidden = true                   -- Kepp buffers opened
 opt.splitbelow = true
 opt.splitright = true
-opt.fillchars = { eob = ' ', fold = ' ', foldopen = '▾', foldsep = '│', foldclose = '▸'}
+opt.fillchars = { eob = ' ', fold = ' ',  diff = '╱' }
 opt.number = true
 opt.relativenumber = true
 opt.cursorline = true
@@ -57,7 +57,7 @@ end
 
 opt.foldtext = 'v:lua.custom_fold()'
 -- ##########################################################################
--- 2. Mappings 
+-- 2. Mappings
 -- ##########################################################################
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
@@ -81,8 +81,8 @@ map("v", "<localleader>d", '"_d')
 -- ###################################
 -- Navigation
 -- ###################################
-map("i", "<C-l>", "<Right>")
-map("i", "<C-h>", "<Left>")
+map("i", "<C-f>", "<Right>")
+map("i", "<C-b>", "<Left>")
 map("i", "<C-k>", "<Up>")
 map("i", "<C-j>", "<Down>")
 map("i", "<C-i>" , "<ESC>^i")
@@ -112,7 +112,7 @@ map("n", "<localleader>Q", ":q! <CR>")       -- quit window
 -- Indentation
 map("v", ">", ">gv")
 map("v", "<", "<gv")
-map("n", "<Esc>", ":noh <CR>")              -- turn off search highlighting
+map("n", "<C-n>", ":noh <CR>")              -- turn off search highlighting
 map("n", "<localleader>f", ":set foldlevel=1<CR>") -- fold
 -- ##########################################################################
 -- 3. Plugins
@@ -129,18 +129,17 @@ map("n", "<leader>b", ":Telescope buffers <CR>")
 map("n", "<leader>l", ":Telescope live_grep <CR>")
 map("n", "<leader>g", ":Telescope grep_string <CR>")
 -- ###################################
--- Truezen
+-- ZenMode
 -- ###################################
-map("n", "<leader><leader>", ":TZAtaraxis <CR>")
-map("n", "<localleader><leader>", ":TZFocus <CR>")
+map("n", "<leader><leader>", ":ZenMode <CR>")
 -- ###################################
 -- Tmux
 -- ###################################
-require("tmux").setup({
-    copy_sync = { enable = true, },
-    navigation = { enable_default_keybindings = true, },
-    resize = { enable_default_keybindings = true, }
-})
+require('Navigator').setup()
+map('n', "<C-h>", "<CMD>lua require('Navigator').left()<CR>", opts)
+map('n', "<C-k>", "<CMD>lua require('Navigator').up()<CR>", opts)
+map('n', "<C-l>", "<CMD>lua require('Navigator').right()<CR>", opts)
+map('n', "<C-j>", "<CMD>lua require('Navigator').down()<CR>", opts)
 -- ###################################
 -- Git
 -- ###################################
