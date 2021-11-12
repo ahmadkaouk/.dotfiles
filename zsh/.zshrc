@@ -14,15 +14,10 @@ SAVEHIST=10000
 # Include hidden files.
 _comp_options+=(globdots)
 
-LS_COLORS="di=1"
-
 source $ZSH/oh-my-zsh.sh
 source ~/.alias
-source ~/.functions
 source ~/.fzf.zsh
 source ~/.zshrc.local
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
-eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
-export PATH="/usr/local/opt/llvm/bin:$PATH"

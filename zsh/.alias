@@ -1,11 +1,6 @@
 # Neovim
 alias v="nvim"
 
-# Exa
-alias ls="exa"
-alias lst="exa -T"
-alias lso="exa --oneline"
-
 # Commands
 alias rmf="rm -rf"
 alias cc="clear"
