@@ -26,9 +26,9 @@ require('packer').startup(function()
         config = [[require('plugins.cmp')]],
         requires = {
             {'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp', },
-            -- {'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp', },
+            {'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp', },
             { "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp", },
-            -- { "L3MON4D3/LuaSnip", after = "cmp-nvim-lsp", },
+            { "L3MON4D3/LuaSnip", after = "cmp-nvim-lsp", },
         },
     }
     -- Misc
