@@ -12,8 +12,8 @@ opt.fillchars = { eob = ' ', fold = ' ', foldopen = '▾', foldsep = '│', fold
 opt.number = true
 opt.relativenumber = true
 opt.cursorline = true
---opt.cursorlineopt = 'screenline,number'
--- opt.termguicolors = true
+opt.cursorlineopt = 'screenline,number'
+opt.termguicolors = true
 opt.mouse = "a"                     -- Enable Mouse
 opt.clipboard = "unnamedplus"       -- allow neovim to access the system clipboard
 opt.swapfile =  false
@@ -130,11 +130,6 @@ map("n", "<leader>b", ":Telescope buffers <CR>")
 map("n", "<leader>l", ":Telescope live_grep <CR>")
 map("n", "<leader>g", ":Telescope grep_string <CR>")
 -- ###################################
--- Truezen
--- ###################################
-map("n", "<leader><leader>", ":TZAtaraxis <CR>")
-map("n", "<localleader><leader>", ":TZFocus <CR>")
--- ###################################
 -- Tmux
 -- ###################################
 require("tmux").setup({
@@ -145,14 +140,9 @@ require("tmux").setup({
 -- ###################################
 -- Git
 -- ###################################
-function _G.gitsigns()
-    require('gitsigns').setup({
-        signs = {
-            add = { text = '▌' },
-            change = { text = '▌' },
-            delete = { text = '▌' },
-            topdelete = { text = '▌' },
-            changedelete = { text = '▌' },
-        },
-    })
-end
+local cmd = vim.cmd
+-- cmd("hi TSKeyword gui=italic")
+-- cmd("hi TSKeywordFunction gui=italic")
+-- cmd("hi TSConditional gui=italic")
+-- cmd("hi TSString gui=italic")
+-- cmd("hi TSRepeat gui=italic")
