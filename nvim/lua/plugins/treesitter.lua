@@ -1,5 +1,5 @@
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = {"c", "cpp", "python", "rust", "lua"},
+    ensure_installed = { "rust", "go", "cpp", "c", "javascript", "lua", "python", "bash" },
     highlight = {
         enable = true,
         use_languagetree = true
@@ -39,9 +39,24 @@ require'nvim-treesitter.configs'.setup {
         navigation = {
             enable = true,
             keymaps = {
-                goto_definition = "gnd",
                 list_definitions = "gnD",
+                goto_definition = "gnd",
+                list_definitions_toc = "gO",
+                goto_next_usage = "<a-*>",
+                goto_previous_usage = "<a-#>",
             },
         },
     },
+    rainbow = {
+        enable = false,
+    },
+    pairs = {
+        enable = true,
+    },
+    playground = {
+        enable = true,
+        disable = {},
+        updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+        persist_queries = false, -- Whether the query persists across vim sessions
+    }
 }

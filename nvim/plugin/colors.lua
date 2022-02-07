@@ -1,5 +1,0 @@
-vim.cmd [[ hi signColumn guibg=NONE ]]
-vim.cmd [[ hi lineNr guibg=NONE ]]
-vim.cmd [[ hi Normal guibg=NONE ]]
-vim.cmd [[ hi EndOfBuffer guibg=NONE ]]
-vim.cmd [[ hi folded gui=bold ]]

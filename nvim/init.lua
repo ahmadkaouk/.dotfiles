@@ -13,12 +13,13 @@ opt.number = true
 opt.relativenumber = true
 opt.cursorline = true
 --opt.cursorlineopt = 'screenline,number'
-opt.termguicolors = true
+-- opt.termguicolors = true
 opt.mouse = "a"                     -- Enable Mouse
 opt.clipboard = "unnamedplus"       -- allow neovim to access the system clipboard
 opt.swapfile =  false
 opt.undofile = true
 opt.ignorecase = true
+opt.statusline = '%2{mode()} | %f %m %r %= %{&spelllang} %y %8(%l,%c%) %8p%%'
 -- ###################################
 -- Command Line Stuff
 -- ###################################
@@ -46,8 +47,8 @@ opt.completeopt = { 'menuone', 'noselect', 'preview' }
 -- ###################################
 -- Fold
 -- ###################################
-opt.foldexpr = 'nvim_treesitter#foldexpr()'
 opt.foldmethod = 'expr'
+opt.foldexpr = 'nvim_treesitter#foldexpr()'
 opt.foldlevel = 20
 
 function _G.custom_fold()
@@ -105,9 +106,11 @@ map("n", ")t", ":tnext<CR>")
 -- Buffer and Window Management
 -- ###################################
 map("n", "<localleader>w", ":w <CR>")       -- save file
-map("n", "<localleader>c", ":bw <CR>")      -- quit buffer
+map("n", "<localleader>b", ":bw <CR>")      -- quit buffer
 map("n", "<localleader>q", ":q <CR>")       -- quit window
 map("n", "<localleader>Q", ":q! <CR>")      -- quit window
+map("n", "<TAB>", ":bn <CR>")
+map("n", "<S-TAB>", ":bp <CR>")
 -- Indentation
 map("v", ">", ">gv")
 map("v", "<", "<gv")
