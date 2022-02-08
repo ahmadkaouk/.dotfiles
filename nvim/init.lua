@@ -20,6 +20,7 @@ opt.swapfile =  false
 opt.undofile = true
 opt.ignorecase = true
 opt.statusline = '%2{mode()} | %f %m %r %= %{&spelllang} %y %8(%l,%c%) %8p%%'
+vim.cmd[[au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=300}]]
 -- ###################################
 -- Command Line Stuff
 -- ###################################
@@ -155,3 +156,9 @@ cmd("hi TSConditional gui=bold")
 cmd("hi TSType guifg=#50fa7b gui=bold")
 cmd("hi TSFunction guifg=#8be9fd")
 cmd("hi TSRepeat gui=bold")
+-- Lsp diagnostics
+
+cmd("hi DiagnosticError guifg=#ff5555")
+cmd("hi DiagnosticWarn guifg=#ffb86c")
+cmd("hi DiagnosticInformation guifg=#f8f8f2")
+cmd("hi DiagnosticHint guifg=#f8f8f2")
