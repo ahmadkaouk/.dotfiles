@@ -141,8 +141,17 @@ require("tmux").setup({
 -- Git
 -- ###################################
 local cmd = vim.cmd
--- cmd("hi TSKeyword gui=italic")
--- cmd("hi TSKeywordFunction gui=italic")
--- cmd("hi TSConditional gui=italic")
--- cmd("hi TSString gui=italic")
--- cmd("hi TSRepeat gui=italic")
+
+require('base16-colorscheme').setup({
+    base00 = '#282936', base01 = '#3a3c4e', base02 = '#4d4f68', base03 = '#6272a4',
+    base04 = '#8be9fd', base05 = '#e9e9f4', base06 = '#f1f2f8', base07 = '#f7f7fb',
+    base08 = '#ff79c6', base09 = '#bd93f9', base0A = '#50fa7b', base0B = '#f1fa8c',
+    base0C = '#8be9fd', base0D = '#ff79c6', base0E = '#bd93f9', base0F = '#50fa7b'
+})
+
+cmd("hi TSKeyword gui=bold")
+cmd("hi TSKeywordFunction gui=bold")
+cmd("hi TSConditional gui=bold")
+cmd("hi TSType guifg=#50fa7b gui=bold")
+cmd("hi TSFunction guifg=#8be9fd")
+cmd("hi TSRepeat gui=bold")

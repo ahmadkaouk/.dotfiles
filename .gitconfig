@@ -6,6 +6,8 @@
 
 [delta]
     navigate = true
+    side-by-side = true
+    syntax-theme = Dracula
 
 [merge]
     conflictstyle = diff3

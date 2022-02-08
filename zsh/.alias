@@ -6,6 +6,8 @@ alias rmf="rm -rf"
 alias cc="clear"
 alias tree='tree -a -I '.git''
 
+alias ls="exa"
+
 # Search
 alias rgi="rg -i"
 alias -g G="| rgi"
