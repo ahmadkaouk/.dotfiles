@@ -7,7 +7,7 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --hidden -t d . $HOME"
 
-plugins=(git tmux sudo autojump zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git tmux sudo zsh-syntax-highlighting zsh-autosuggestions)
 # History in cache directory:
 HISTSIZE=10000
 SAVEHIST=10000
@@ -19,5 +19,5 @@ source ~/.alias
 source ~/.fzf.zsh
 source ~/.zshrc.local
 fpath+=${ZDOTDIR:-~}/.zsh_functions
-
+eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"

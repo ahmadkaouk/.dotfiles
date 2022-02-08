@@ -38,5 +38,6 @@ require('packer').startup(function()
     use { "tpope/vim-commentary", event = "BufRead", }
     use { "justinmk/vim-sneak", event = "BufRead", }
     use { "aserowy/tmux.nvim"  }
+    use { "Pocco81/TrueZen.nvim", event = "BufRead", config = [[require('true-zen')]], }
     use { "RRethy/nvim-base16", }
 end)
