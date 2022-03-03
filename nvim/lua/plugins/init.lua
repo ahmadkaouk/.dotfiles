@@ -7,6 +7,7 @@ require('packer').startup(function()
     -- Search [ Telescope ]
     use { 'nvim-telescope/telescope.nvim', cmd = 'Telescope', config = [[require('plugins.telescope')]], }
     use {'nvim-telescope/telescope-fzy-native.nvim', run = 'make',}
+    use { "jvgrootveld/telescope-zoxide", }
     -- Highlight
     use {
         "nvim-treesitter/nvim-treesitter",
@@ -39,5 +40,10 @@ require('packer').startup(function()
     use { "justinmk/vim-sneak", event = "BufRead", }
     use { "aserowy/tmux.nvim"  }
     use { "Pocco81/TrueZen.nvim", event = "BufRead", config = [[require('true-zen')]], }
-    use { "RRethy/nvim-base16", }
+    use 'tanvirtin/monokai.nvim'
+    use { "lewis6991/gitsigns.nvim", event = "BufRead",  config = [[gitsigns()]], }
+    use {"ellisonleao/glow.nvim"}
+    use { 'windwp/nvim-autopairs', event = "BufRead", config = [[require('nvim-autopairs').setup{}]] }
+    use { "AckslD/nvim-neoclip.lua", config = [[require('neoclip').setup{}]], }
+    use { "lukas-reineke/indent-blankline.nvim" }
 end)

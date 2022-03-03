@@ -124,12 +124,13 @@ require("plugins")
 -- ###################################
 -- Telescope
 -- ###################################
-map("n", "<leader>ff", ":Telescope find_files <CR>")
-map("n", "<leader>f", ":Telescope git_files<CR>")
+map("n", "<leader>p", ":Telescope find_files <CR>")
+map("n", "<leader>g", ":Telescope git_files<CR>")
+map("n", "<leader>z", ":Telescope zoxide list<CR>")
 map("n", "<leader>o", ":Telescope oldfiles <CR>")
 map("n", "<leader>b", ":Telescope buffers <CR>")
-map("n", "<leader>l", ":Telescope live_grep <CR>")
-map("n", "<leader>g", ":Telescope grep_string <CR>")
+map("n", "<leader>ff", ":Telescope live_grep <CR>")
+map("n", "<leader>f", ":Telescope grep_string <CR>")
 -- ###################################
 -- Tmux
 -- ###################################
@@ -141,24 +142,24 @@ require("tmux").setup({
 -- ###################################
 -- Git
 -- ###################################
+function _G.gitsigns()
+    require('gitsigns').setup({
+        signs = {
+            add = { text = '▌' },
+            change = { text = '▌' },
+            delete = { text = '▌' },
+            topdelete = { text = '▌' },
+            changedelete = { text = '▌' },
+        },
+    })
+end
+
 local cmd = vim.cmd
-
-require('base16-colorscheme').setup({
-    base00 = '#282936', base01 = '#3a3c4e', base02 = '#4d4f68', base03 = '#6272a4',
-    base04 = '#8be9fd', base05 = '#e9e9f4', base06 = '#f1f2f8', base07 = '#f7f7fb',
-    base08 = '#ff79c6', base09 = '#bd93f9', base0A = '#50fa7b', base0B = '#f1fa8c',
-    base0C = '#8be9fd', base0D = '#ff79c6', base0E = '#bd93f9', base0F = '#50fa7b'
-})
-
+cmd("colorscheme monokai_ristretto")
 cmd("hi TSKeyword gui=bold")
 cmd("hi TSKeywordFunction gui=bold")
 cmd("hi TSConditional gui=bold")
-cmd("hi TSType guifg=#50fa7b gui=bold")
-cmd("hi TSFunction guifg=#8be9fd")
+cmd("hi TSType gui=bold")
 cmd("hi TSRepeat gui=bold")
--- Lsp diagnostics
-
-cmd("hi DiagnosticError guifg=#ff5555")
-cmd("hi DiagnosticWarn guifg=#ffb86c")
-cmd("hi DiagnosticInformation guifg=#f8f8f2")
-cmd("hi DiagnosticHint guifg=#f8f8f2")
+cmd("hi TSFunction gui=none")
+cmd("hi IndentBlanklineChar  guifg=#333333")
