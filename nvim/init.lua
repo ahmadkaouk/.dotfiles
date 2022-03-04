@@ -155,11 +155,9 @@ function _G.gitsigns()
 end
 
 local cmd = vim.cmd
-cmd("colorscheme monokai_ristretto")
-cmd("hi TSKeyword gui=bold")
-cmd("hi TSKeywordFunction gui=bold")
-cmd("hi TSConditional gui=bold")
-cmd("hi TSType gui=bold")
-cmd("hi TSRepeat gui=bold")
-cmd("hi TSFunction gui=none")
-cmd("hi IndentBlanklineChar  guifg=#333333")
+cmd("hi Pmenu guibg=#222222")
+cmd("hi VertSplit guifg=#2d2a2e guibg=#222222")
+cmd("hi TSComment guifg=grey gui=italic")
+cmd("hi LineNr guifg=grey")
+cmd("hi SignColumn guibg=none")
+cmd("hi FloatBorder guibg=#222222")

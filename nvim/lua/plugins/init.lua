@@ -44,6 +44,4 @@ require('packer').startup(function()
     use { "lewis6991/gitsigns.nvim", event = "BufRead",  config = [[gitsigns()]], }
     use {"ellisonleao/glow.nvim"}
     use { 'windwp/nvim-autopairs', event = "BufRead", config = [[require('nvim-autopairs').setup{}]] }
-    use { "AckslD/nvim-neoclip.lua", config = [[require('neoclip').setup{}]], }
-    use { "lukas-reineke/indent-blankline.nvim" }
 end)
