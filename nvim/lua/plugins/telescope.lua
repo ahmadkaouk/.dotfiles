@@ -9,7 +9,12 @@ telescope.setup{
             height = 0.90,
             preview_cutoff = 100,
         },
-        border = {},
+        borderchars = {
+            { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+            prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
+            results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
+            preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+        },
     },
     file_sorter = require("telescope.sorters").get_fzy_sorter,
     extensions = {
@@ -26,6 +31,12 @@ telescope.setup{
                 width = 0.80,
                 height = 0.80,
             },
+            borderchars = {
+                { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+                prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
+                results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
+                preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+            },
         },
         git_files = {
             theme = "dropdown",
@@ -41,6 +52,12 @@ telescope.setup{
             layout_config = {
                 width = 0.80,
                 height = 0.80,
+            },
+            borderchars = {
+                { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+                prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
+                results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
+                preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
             },
         },
         buffers = {

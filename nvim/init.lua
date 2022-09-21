@@ -19,8 +19,9 @@ opt.clipboard = "unnamedplus"       -- allow neovim to access the system clipboa
 opt.swapfile =  false
 opt.undofile = true
 opt.ignorecase = true
-opt.statusline = '%2{mode()} | %f %m %r %= %{&spelllang} %y %8(%l,%c%) %8p%%'
-vim.cmd[[au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=300}]]
+opt.statusline = '%{mode()}  %f %m %r %= %{&spelllang} %y %8(%l,%c%) %8p%%'
+opt.laststatus = 3
+vim.cmd[[au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=200}]]
 -- ###################################
 -- Command Line Stuff
 -- ###################################
@@ -92,17 +93,17 @@ map("i", "<C-e>" , "<End>")
 -- Lists and tags
 -- ###################################
 -- Arglists
-map("n", "(a", ":previous<CR>")
-map("n", ")a", ":next<CR>")
-map("n", "(A", ":first<CR>")
-map("n", ")A", ":last<CR>")
+map("n", "[a", ":previous<CR>")
+map("n", "]a", ":next<CR>")
+map("n", "[A", ":first<CR>")
+map("n", "]A", ":last<CR>")
 -- Quick Fix List
-map("n", "(q", ":cp<CR>")
-map("n", ")q", ":cn<CR>")
+map("n", "[q", ":cp<CR>")
+map("n", "]q", ":cn<CR>")
 -- tags
 map("n", "<localleader>t", "g<C-]>")
-map("n", "(t", ":tprevious<CR>")
-map("n", ")t", ":tnext<CR>")
+map("n", "[t", ":tprevious<CR>")
+map("n", "]t", ":tnext<CR>")
 -- ###################################
 -- Buffer and Window Management
 -- ###################################
@@ -116,9 +117,10 @@ map("n", "<S-TAB>", ":bp <CR>")
 map("v", ">", ">gv")
 map("v", "<", "<gv")
 map("n", "<localleader>n", ":noh <CR>")     -- turn off search highlighting
+map("n", "<localleader>i", ":IndentBlanklineToggle <CR>")
 
 -- ##########################################################################
--- 3. Plugins
+-- Plugins
 -- ##########################################################################
 require("plugins")
 -- ###################################
@@ -155,9 +157,6 @@ function _G.gitsigns()
 end
 
 local cmd = vim.cmd
-cmd("hi Pmenu guibg=#222222")
-cmd("hi VertSplit guifg=#2d2a2e guibg=#222222")
-cmd("hi TSComment guifg=grey gui=italic")
-cmd("hi LineNr guifg=grey")
+cmd("hi NormalFloat gui=none")
 cmd("hi SignColumn guibg=none")
-cmd("hi FloatBorder guibg=#222222")
+cmd("set background=light")

@@ -6,6 +6,7 @@ export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat 
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --hidden -t d . $HOME"
+export BAT_THEME="ansi"
 
 plugins=(git tmux sudo zsh-syntax-highlighting zsh-autosuggestions)
 # History in cache directory:
@@ -18,6 +19,8 @@ source $ZSH/oh-my-zsh.sh
 source ~/.alias
 source ~/.fzf.zsh
 source ~/.zshrc.local
+
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"

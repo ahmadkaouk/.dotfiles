@@ -1,31 +1,4 @@
 vim.opt.completeopt = "menuone,noselect"
-local icons = {
-    Text = "",
-    Method = "",
-    Function = "",
-    Constructor = "",
-    Field = "ﰠ",
-    Variable = "",
-    Class = "ﴯ",
-    Interface = "",
-    Module = "",
-    Property = "ﰠ",
-    Unit = "塞",
-    Value = "",
-    Enum = "",
-    Keyword = "",
-    Snippet = "",
-    Color = "",
-    File = "",
-    Reference = "",
-    Folder = "",
-    EnumMember = "",
-    Constant = "",
-    Struct = "פּ",
-    Event = "",
-    Operator = "",
-    TypeParameter = "",
-}
 -- luasnip setup
 local luasnip = require 'luasnip'
 local cmp = require("cmp")
@@ -39,7 +12,7 @@ cmp.setup {
         format = function(entry, vim_item)
             vim_item.kind = string.format(
             "%s %s",
-            icons[vim_item.kind],
+            "",
             vim_item.kind
             )
             vim_item.menu = ({
