@@ -15,8 +15,20 @@ SAVEHIST=10000
 # Include hidden files.
 _comp_options+=(globdots)
 
+# Neovim
+alias v="nvim"
+alias b="bat"
+alias rmf="rm -rf"
+alias cc="clear"
+alias tree="tree -a -C -I '.git' --gitignore"
+alias treel='tree -L'
+alias ls="exa"
+alias rgi="rg -i"
+alias -g G="| rgi"
+alias -g L="| less"
+alias -g B="| bat"
+
 source $ZSH/oh-my-zsh.sh
-source ~/.alias
 source ~/.fzf.zsh
 source ~/.zshrc.local
 

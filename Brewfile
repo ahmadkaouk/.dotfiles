@@ -10,9 +10,9 @@ brew neovim, args: ["HEAD"]
 brew tree
 brew tmux
 brew ripgrep
-brew skhd
 brew startship
 brew zoxide
-brew yabai
-cask alacritty
+
+cask obsidian
 cask raycast
+cask spotify
