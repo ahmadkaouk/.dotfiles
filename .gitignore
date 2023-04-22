@@ -1,6 +1,2 @@
 .DS_Store
-.netrwhist
 Brewfile.lock.json
-*undodir*
-packer_compiled.lua
-*plugin*

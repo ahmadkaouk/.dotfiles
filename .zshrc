@@ -8,7 +8,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --hidden -t d . $HOME"
 export BAT_THEME="ansi"
 
-plugins=(git tmux sudo zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 # History in cache directory:
 HISTSIZE=10000
 SAVEHIST=10000
@@ -18,15 +18,16 @@ _comp_options+=(globdots)
 # Neovim
 alias v="nvim"
 alias b="bat"
-alias rmf="rm -rf"
+alias rm="trash"
+alias rmf="trash -rf"
 alias cc="clear"
 alias tree="tree -a -C -I '.git' --gitignore"
 alias treel='tree -L'
-alias ls="exa"
 alias rgi="rg -i"
 alias -g G="| rgi"
 alias -g L="| less"
 alias -g B="| bat"
+alias wb="code ~/whiteboard.excalidraw"
 
 source $ZSH/oh-my-zsh.sh
 source ~/.fzf.zsh

@@ -6,7 +6,7 @@ brew git
 brew git-delta
 brew go
 brew neofetch
-brew neovim, args: ["HEAD"]
+brew neovim
 brew tree
 brew tmux
 brew ripgrep
@@ -15,4 +15,7 @@ brew zoxide
 
 cask obsidian
 cask raycast
+cask bitwarden
+cask magnet
+cask code
 cask spotify
