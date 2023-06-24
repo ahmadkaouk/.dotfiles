@@ -1,21 +1,16 @@
 brew bat
-brew exa
 brew fd
-brew fzf
 brew git
-brew git-delta
-brew go
-brew neofetch
-brew neovim
+brew trash
 brew tree
-brew tmux
 brew ripgrep
 brew startship
 brew zoxide
 
-cask obsidian
+
+cask code-insiders
 cask raycast
-cask bitwarden
-cask magnet
-cask code
-cask spotify
+cask slack
+# cask arc
+# cask docker
+# cask flow

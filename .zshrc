@@ -27,7 +27,6 @@ alias rgi="rg -i"
 alias -g G="| rgi"
 alias -g L="| less"
 alias -g B="| bat"
-alias wb="code ~/whiteboard.excalidraw"
 
 source $ZSH/oh-my-zsh.sh
 source ~/.fzf.zsh
