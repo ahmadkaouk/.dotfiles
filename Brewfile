@@ -1,16 +1,14 @@
-brew bat
 brew fd
 brew git
 brew trash
 brew tree
 brew ripgrep
-brew startship
 brew zoxide
+brew httpie
+brew jq
 
 
-cask code-insiders
+cask code
 cask raycast
-cask slack
 # cask arc
 # cask docker
-# cask flow
